@@ -15,7 +15,11 @@ export default defineConfig({
       name: 'inctagram-ui-kit',
     },
     rollupOptions: {
-      external: [...Object.keys(dependencies), ...Object.keys(devDependencies)],
+      external: [
+        'react/jsx-runtime',
+        ...Object.keys(dependencies),
+        ...Object.keys(devDependencies),
+      ],
     },
     sourcemap: true,
     target: 'esnext',
