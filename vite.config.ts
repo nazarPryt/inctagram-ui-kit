@@ -1,7 +1,8 @@
-// vite.config.js
 import { resolve } from 'path'
 
 import { defineConfig } from 'vite'
+
+import { dependencies, devDependencies } from './package.json'
 
 export default defineConfig({
   build: {
@@ -9,20 +10,14 @@ export default defineConfig({
       // Could also be a dictionary or array of multiple entry points
       entry: resolve(__dirname, 'src/index.ts'),
       // the proper extensions will be added
-      fileName: 'my-lib',
-      name: 'MyLib',
+      fileName: 'index',
+      formats: ['es'],
+      name: 'inctagram-ui-kit',
     },
     rollupOptions: {
-      // make sure to externalize deps that shouldn't be bundled
-      // into your library
-      external: ['vue'],
-      output: {
-        // Provide global variables to use in the UMD build
-        // for externalized deps
-        globals: {
-          vue: 'Vue',
-        },
-      },
+      external: [...Object.keys(dependencies), ...Object.keys(devDependencies)],
     },
+    sourcemap: true,
+    target: 'esnext',
   },
 })
