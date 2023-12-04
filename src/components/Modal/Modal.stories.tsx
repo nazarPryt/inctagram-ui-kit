@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { Meta, StoryObj } from '@storybook/react'
 
-import { ModalDecorator } from '../../lib/storybook/decorators/ModalDecorator'
+import { ModalDecorator } from '../../decorators/ModalDecorator'
 import { Modal } from './Modal'
 
 const meta: Meta<typeof Modal> = {
