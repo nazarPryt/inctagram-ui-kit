@@ -1,29 +1,30 @@
-import type {Meta, StoryObj} from '@storybook/react'
-import {withThemeDecorator} from '../../lib/storybook/decorators/withThemeDecorator'
-import {InputPassword} from './InputPassword'
+import type { Meta, StoryObj } from '@storybook/react'
+
+import { withThemeDecorator } from '../../lib/storybook/decorators/withThemeDecorator'
+import { InputPassword } from './InputPassword'
 
 const meta = {
-    title: 'Components/InputPassword',
-    component: InputPassword,
-    tags: ['autodocs'],
-    args: {},
+  args: {},
+  component: InputPassword,
+  tags: ['autodocs'],
+  title: 'Components/InputPassword',
 } satisfies Meta<typeof InputPassword>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-    args: {
-        label: 'Label',
-    },
-    decorators: [withThemeDecorator],
+  args: {
+    label: 'Label',
+  },
+  decorators: [withThemeDecorator],
 }
 
 export const Error: Story = {
-    args: {
-        label: 'Input with error',
+  args: {
+    error: 'Error message',
 
-        error: 'Error message',
-    },
-    decorators: [withThemeDecorator],
+    label: 'Input with error',
+  },
+  decorators: [withThemeDecorator],
 }

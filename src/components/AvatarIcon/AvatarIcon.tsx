@@ -1,12 +1,10 @@
-import React from 'react'
-
 import * as process from 'process'
 
 import Image from 'next/image'
-import { EmptyAvatar } from 'shared/assets/icons/emptyAvatar'
 
 import { PATH } from '../../constants/PATH'
 import { AvatarIconWrapper } from './AvatarIcon.styled'
+import { EmptyAvatar } from './icons/emptyAvatar'
 
 export type AvatarIconType = {
   img: string

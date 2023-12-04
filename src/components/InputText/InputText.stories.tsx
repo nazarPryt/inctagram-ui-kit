@@ -1,29 +1,30 @@
-import type {Meta, StoryObj} from '@storybook/react'
-import {withThemeDecorator} from '../../lib/storybook/decorators/withThemeDecorator'
-import {InputText} from './InputText'
+import type { Meta, StoryObj } from '@storybook/react'
+
+import { withThemeDecorator } from '../../lib/storybook/decorators/withThemeDecorator'
+import { InputText } from './InputText'
 
 const meta = {
-    title: 'Components/InputText',
-    component: InputText,
-    tags: ['autodocs'],
-    args: {},
+  args: {},
+  component: InputText,
+  tags: ['autodocs'],
+  title: 'Components/InputText',
 } satisfies Meta<typeof InputText>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-    args: {
-        label: 'Label',
-    },
-    decorators: [withThemeDecorator],
+  args: {
+    label: 'Label',
+  },
+  decorators: [withThemeDecorator],
 }
 
 export const Error: Story = {
-    args: {
-        label: 'Input with error',
+  args: {
+    error: 'Error message',
 
-        error: 'Error message',
-    },
-    decorators: [withThemeDecorator],
+    label: 'Input with error',
+  },
+  decorators: [withThemeDecorator],
 }

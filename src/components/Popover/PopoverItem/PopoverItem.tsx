@@ -1,19 +1,19 @@
-import React, {ComponentProps, ComponentPropsWithoutRef, forwardRef, ReactNode} from 'react'
-import {NavButtonWrapper} from 'widgets/Aside/ui/NavButton/NavButton.styled'
-import {InputText} from 'shared/ui/InputText/InputText'
+import { ComponentProps, ReactNode, forwardRef } from 'react'
+
+import { PopoverItemWrapper } from './PopoverItem.styled'
 
 type PopoverItemProps = {
-    name: string
-    icon: ReactNode
+  icon: ReactNode
+  name: string
 } & ComponentProps<'button'>
 
 export const PopoverItem = forwardRef<HTMLButtonElement, PopoverItemProps>((props, ref) => {
-    return (
-        <NavButtonWrapper ref={ref} {...props} onClick={props.onClick}>
-            {props.icon}
-            <span>{props.name}</span>
-        </NavButtonWrapper>
-    )
+  return (
+    <PopoverItemWrapper ref={ref} {...props} onClick={props.onClick}>
+      {props.icon}
+      <span>{props.name}</span>
+    </PopoverItemWrapper>
+  )
 })
 
 PopoverItem.displayName = 'PopoverItem'

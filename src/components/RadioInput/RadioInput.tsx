@@ -1,21 +1,25 @@
-import React, {ComponentProps, forwardRef, ReactNode} from 'react'
-import RadioCheckedIcon from '../../assets/icons/radio_button_checked.svg'
-import RadioUncheckedIcon from '../../assets/icons/radio_button_unchecked.svg'
-import {RadioInputWrapper} from './RadioInput.styled'
+import { ComponentProps, ReactNode, forwardRef } from 'react'
+
+import { RadioInputWrapper } from './RadioInput.styled'
+import { RadioButtonCheckedIcon } from './icons/RadioButtonCheckedIcon'
+import { RadioButtonUnCheckedIcon } from './icons/RadioButtonUnCheckedIcon'
 
 type DefaultInputPropsType = ComponentProps<'input'>
-type RadioType = DefaultInputPropsType & {
-    label?: ReactNode
+export type RadioType = DefaultInputPropsType & {
+  label?: ReactNode
 }
 
 export const RadioInput = forwardRef<HTMLInputElement, RadioType>((props, ref) => {
-    const {label, checked, ...rest} = props
-    return (
-        <RadioInputWrapper>
-            <input ref={ref} checked={checked} type='radio' {...rest} />
-            <div className={'radioIcon'}>{checked ? <RadioCheckedIcon /> : <RadioUncheckedIcon />}</div>
-            {label}
-        </RadioInputWrapper>
-    )
+  const { checked, label, ...rest } = props
+
+  return (
+    <RadioInputWrapper>
+      <input checked={checked} ref={ref} type={'radio'} {...rest} />
+      <div className={'radioIcon'}>
+        {checked ? <RadioButtonCheckedIcon /> : <RadioButtonUnCheckedIcon />}
+      </div>
+      {label}
+    </RadioInputWrapper>
+  )
 })
 RadioInput.displayName = 'RadioInput'

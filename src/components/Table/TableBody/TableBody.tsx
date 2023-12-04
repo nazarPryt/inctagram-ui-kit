@@ -1,8 +1,9 @@
-import React, {ComponentProps} from 'react'
-import {TableBodyStyled} from 'shared/ui/Table/TableBody/TableBody.styled'
+import { ComponentProps } from 'react'
+
+import { TableBodyStyled } from './TableBody.styled'
 
 type TableBodyProps = ComponentProps<'tbody'>
 
 export const TableBody = (props: TableBodyProps) => {
-    return <TableBodyStyled {...props} />
+  return <TableBodyStyled {...props} />
 }
