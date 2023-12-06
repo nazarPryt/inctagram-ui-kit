@@ -9,7 +9,7 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-essentials'),
   ],
   framework: {
-    name: getAbsolutePath('@storybook/react-vite'),
+    name: getAbsolutePath('@storybook/nextjs'),
     options: {},
   },
   docs: {

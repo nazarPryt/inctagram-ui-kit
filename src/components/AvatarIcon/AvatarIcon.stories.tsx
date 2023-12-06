@@ -5,7 +5,7 @@ import { AvatarIcon } from './AvatarIcon'
 const meta: Meta<typeof AvatarIcon> = {
   argTypes: {},
   component: AvatarIcon,
-  tags: ['docsPage'],
+  tags: ['autodocs'],
   title: 'Components/AvatarIcon',
 }
 
