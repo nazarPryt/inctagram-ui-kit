@@ -1,7 +1,7 @@
 import { Decorator } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
 
-import { GlobalStyle } from '../styles/GlobalStyle'
+import { GlobalStyles } from '../styles/GlobalStyles'
 import { darkTheme } from '../styles/darkTheme'
 import { lightTheme } from '../styles/lightTheme'
 
@@ -16,7 +16,7 @@ export const withThemeDecorator: Decorator = (Story, context) => {
   return (
     // @ts-ignore
     <ThemeProvider theme={THEMES[theme] || THEMES['light']}>
-      <GlobalStyle />
+      <GlobalStyles />
       <Story />
     </ThemeProvider>
   )
