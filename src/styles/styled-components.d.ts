@@ -1,5 +1,6 @@
+import {TypographyType} from "./typography";
+
 export type ThemeAppType = 'dark' | 'light'
-import 'styled-components'
 
 interface IPalette {
     100: string
@@ -11,32 +12,7 @@ interface IPalette {
 }
 
 interface IViewPort {
-    768: string //todo check & add relevant Screen sizes and breakpoints
-}
-
-interface ITypographyType {
-    fontFamilyPrimary: string
-
-    fontSizeL: string
-    fontSizeM: string
-    // font sizes
-    fontSizeNotification: string
-    fontSizeS: string
-
-    fontSizeXL: string
-    fontSizeXS: string
-    fontSizeXXL: string
-    fontWeightBold: number
-    fontWeightMedium: number
-    // font weights
-    fontWeightRegular: number
-    fontWeightSemiBold: number
-
-    lineHeightL: string
-    lineHeightM: string
-    lineHeightS: string
-    // line heights
-    lineHeightXS: string
+    768: string //todo check & add more relevant Screen sizes and breakpoints
 }
 
 declare module 'styled-components' {
@@ -51,7 +27,7 @@ declare module 'styled-components' {
             warning: IPalette
         }
         textColor: IPalette
-        typography: ITypographyType
+        typography: TypographyType
         viewPort: IViewPort
     }
 }

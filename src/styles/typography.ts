@@ -1,25 +1,109 @@
+import { css } from 'styled-components'
+
 export const typography = {
-  fontFamilyPrimary: 'Inter',
-
-  // line heights
-
-  fontSizeL: '1.125rem',
-  fontSizeM: '1rem',
-  // font sizes
-  fontSizeNotification: '0.55rem',
-  fontSizeS: '0.875rem',
-
-  fontSizeXL: '1.25rem',
-  fontSizeXS: '0.75rem',
-  fontSizeXXL: '1.625rem',
-  fontWeightBold: 700,
-  fontWeightMedium: 500,
-  // font weights
-  fontWeightRegular: 400,
-  fontWeightSemiBold: 600,
-
-  lineHeightL: '36px',
-  lineHeightM: '24px',
-  lineHeightS: '16px',
-  lineHeightXS: '14px',
+  Bold_text_16() {
+    return css`
+      font-family: 'Inter Variable', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.5rem;
+    `
+  },
+  H1() {
+    return css`
+      font-family: 'Inter Variable', sans-serif;
+      font-weight: 700;
+      font-size: 1.25rem;
+      line-height: 2.25rem;
+    `
+  },
+  H2() {
+    return css`
+      font-family: 'Inter Variable', sans-serif;
+      font-weight: 700;
+      font-size: 1.125rem;
+      line-height: 1.5rem;
+    `
+  },
+  H3() {
+    return css`
+      font-family: 'Inter Variable', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 2.25rem;
+    `
+  },
+  Large() {
+    return css`
+      font-family: 'Inter Variable', sans-serif;
+      font-weight: 600;
+      font-size: 1.625rem;
+      line-height: 2.25rem;
+    `
+  },
+  Medium_text_14() {
+    return css`
+      font-family: 'Inter Variable', sans-serif;
+      font-weight: 500;
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+    `
+  },
+  Semi_bold_small_text() {
+    return css`
+      font-family: 'Inter Variable', sans-serif;
+      font-weight: 600;
+      font-size: 0.75rem;
+      line-height: 1rem;
+    `
+  },
+  bold_text_14() {
+    return css`
+      font-family: 'Inter Variable', sans-serif;
+      font-weight: 700;
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+    `
+  },
+  regular_link() {
+    return css`
+      font-family: 'Inter Variable', sans-serif;
+      font-weight: 400;
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+    `
+  },
+  regular_text_14() {
+    return css`
+      font-family: 'Inter Variable', sans-serif;
+      font-weight: 400;
+      font-size: 0.875rem;
+      line-height: 1.5rem;
+    `
+  },
+  regular_text_16() {
+    return css`
+      font-family: 'Inter Variable', sans-serif;
+      font-weight: 400;
+      font-size: 1rem;
+      line-height: 1.5rem;
+    `
+  },
+  small_link() {
+    return css`
+      font-family: 'Inter Variable', sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      line-height: 1rem;
+    `
+  },
+  small_text() {
+    return css`
+      font-family: 'Inter Variable', sans-serif;
+      font-weight: 400;
+      font-size: 0.75rem;
+      line-height: 1rem;
+    `
+  },
 }
+export type TypographyType = typeof typography
