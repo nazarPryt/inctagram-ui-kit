@@ -1,22 +1,11 @@
-# Usage:
+# Ui-Kit package:
 
-- Clone template: (replace `my-lib` with your project name)
+
+- Install package:
   ```bash
-  npx degit https://github.com/ershisan99/lib-with-storybook-starter my-lib
+  yarn add @nazar-pryt/inctagram-ui-kit
   ```
+- The link to find this package posted on NPM
+  [Link](https://npmjs.com/package/@nazar-pryt/inctagram-ui-kit)
 
-- Change directory: (replace `my-lib` with your project name)
-  ```bash
-  cd my-lib
-  ```
-
-- Install dependencies:
-  ```bash
-  pnpm i
-  ```
-
-- Run storybook:
-  ```bash
-  pnpm dev
-  ```
-
+  
