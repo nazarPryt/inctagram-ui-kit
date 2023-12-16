@@ -1,7 +1,7 @@
 import { ComponentProps, ReactNode } from 'react'
 
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { useRouter } from 'next/router'
 
 import { NavIconWrapper, NavLinkWrapper } from './NavLink.styled'
 
@@ -13,11 +13,12 @@ type NavLinkProps = DefaultLinkPropsType & {
 }
 
 export const NavLink = (props: NavLinkProps) => {
-  const pathname = usePathname()
+  const router = useRouter()
+  const isActive = router.pathname === props.href
 
   return (
-    <NavLinkWrapper {...props} className={pathname === props.href ? 'active' : ''}>
-      <NavIconWrapper active={pathname === props.href}>{props.icon}</NavIconWrapper>
+    <NavLinkWrapper {...props} $active={isActive}>
+      <NavIconWrapper $active={isActive}>{props.icon}</NavIconWrapper>
       {props.name}
     </NavLinkWrapper>
   )

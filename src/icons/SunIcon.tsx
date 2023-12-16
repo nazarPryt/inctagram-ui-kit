@@ -2,7 +2,7 @@ export const SunIcon = () => {
   return (
     <svg
       enableBackground={'new 0 0 100 100'}
-      fill={'white'}
+      fill={'black'}
       height={'30px'}
       id={'Layer_1'}
       version={'1.1'}

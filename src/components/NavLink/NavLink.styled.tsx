@@ -3,27 +3,34 @@ import { ReactNode } from 'react'
 import Link from 'next/link'
 import { css, styled } from 'styled-components'
 
-export const NavLinkWrapper = styled(Link)`
+export const NavLinkWrapper = styled(Link)<{ $active: boolean }>`
   display: flex;
   align-items: center;
   gap: 15px;
 
   text-decoration: none;
-  color: ${props => props.theme.textColor[100]};
+
+  ${props => {
+    if (props.$active) {
+      return css`
+        color: ${props => props.theme.palette.primary[500]};
+      `
+    } else {
+      return css`
+        color: ${props => props.theme.textColor[100]};
+      `
+    }
+  }}
+
+  path {
+    fill: ${props => props.theme.textColor[100]};
+  }
 
   &:hover {
     color: ${props => props.theme.palette.primary[100]};
 
     path {
       fill: ${props => props.theme.palette.primary[100]};
-    }
-  }
-
-  &.active {
-    color: ${props => props.theme.palette.primary[500]};
-
-    path {
-      fill: ${props => props.theme.palette.primary[500]};
     }
   }
 `
@@ -51,6 +58,6 @@ const Wrapper = styled.span<{ $active: boolean }>`
   }
 `
 
-export const NavIconWrapper = (props: { active: boolean; children: ReactNode }) => {
-  return <Wrapper $active={props.active}>{props.children}</Wrapper>
+export const NavIconWrapper = (props: { $active: boolean; children: ReactNode }) => {
+  return <Wrapper $active={props.$active}>{props.children}</Wrapper>
 }
