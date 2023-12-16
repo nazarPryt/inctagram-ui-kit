@@ -7,12 +7,14 @@ type NavButtonType = ComponentProps<'button'> & {
   title: string
 }
 
-export const NavButton = forwardRef<HTMLButtonElement, NavButtonType>((props, ref) => {
-  return (
-    <NavButtonWrapper ref={ref} {...props}>
-      {props.icon}
-      {props.title}
-    </NavButtonWrapper>
-  )
-})
+export const NavButton = forwardRef<HTMLButtonElement, NavButtonType>(
+  ({ icon, title, ...props }, ref) => {
+    return (
+      <NavButtonWrapper ref={ref} {...props}>
+        {icon}
+        {title}
+      </NavButtonWrapper>
+    )
+  }
+)
 NavButton.displayName = 'NavButton'
