@@ -30,7 +30,7 @@ export const PageButtonItemMixin = css`
 `
 
 export const PageButtonStyled = styled.button<{ $selected?: boolean }>`
-  ${PageButtonItemMixin}
+  //${PageButtonItemMixin}
 
   ${props => {
     if (props.$selected) {

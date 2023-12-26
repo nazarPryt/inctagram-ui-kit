@@ -5,8 +5,11 @@ import { useState } from '@storybook/preview-api'
 import { Pagination } from './Pagination'
 
 const meta: Meta<typeof Pagination> = {
-  // argTypes: { onChange: { action: 'clicked' } },
-  args: { count: 12, page: 1 },
+  argTypes: { onChange: { action: 'clicked' } },
+  args: {
+    count: 11,
+    page: 1,
+  },
   component: Pagination,
   tags: ['autodocs'],
   title: 'Components/Pagination',
@@ -17,15 +20,14 @@ export default meta
 type Story = StoryObj<typeof Pagination>
 
 export const Default: Story = {
-  // argTypes: { onChange: { action: 'clicked' } },
-  render: () => {
-    const [page, setPage] = useState(1)
+  argTypes: { onChange: { action: 'clicked' } },
+  render: args => {
+    const [page, setPage] = useState(args.page)
     const [perPage, setPerPage] = useState(8)
-    const TOTAL_PAGES_COUNT = 10
 
     return (
       <Pagination
-        count={TOTAL_PAGES_COUNT}
+        count={args.count}
         onChange={setPage}
         onPerPageChange={setPerPage}
         page={page}
