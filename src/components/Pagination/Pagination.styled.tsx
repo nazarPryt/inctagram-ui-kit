@@ -1,8 +1,21 @@
 import { styled } from 'styled-components'
 
+import { PageButtonItem } from './Pagination'
+
 export const PaginationStyled = styled.div`
-  list-style: none;
   display: flex;
+  gap: 25px;
   align-items: center;
-  gap: 5px;
+
+  .container {
+    display: flex;
+    gap: 12px;
+    list-style-type: none;
+  }
+  ${PageButtonItem}
+  svg {
+    path {
+      fill: ${props => props.theme.textColor[100]};
+    }
+  }
 `

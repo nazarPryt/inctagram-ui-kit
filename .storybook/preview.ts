@@ -1,12 +1,10 @@
-import type { Preview } from '@storybook/react'
-
 import { ThemeProvider } from 'styled-components'
-import { withThemeFromJSXProvider } from '@storybook/addon-styling'
-
+import { withThemeFromJSXProvider } from '@storybook/addon-themes'
 import { withThemeDecorator } from '../src/decorators/withThemeDecorator'
 import { lightTheme } from '../src/styles/lightTheme'
 import { darkTheme } from '../src/styles/darkTheme'
 import { GlobalStyles } from '../src/styles/GlobalStyles'
+import { Preview, ReactRenderer } from '@storybook/react'
 
 const preview: Preview = {
   parameters: {
@@ -18,9 +16,8 @@ const preview: Preview = {
       },
     },
   },
-
   decorators: [
-    withThemeFromJSXProvider({
+    withThemeFromJSXProvider<ReactRenderer>({
       themes: {
         light: lightTheme,
         dark: darkTheme,

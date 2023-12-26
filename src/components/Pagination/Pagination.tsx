@@ -1,4 +1,7 @@
+import { css, styled } from 'styled-components'
+
 import { ArrowBack, ArrowForward, DotsHorizontal } from '../../icons'
+import { PaginationStyled } from './Pagination.styled'
 import { usePagination } from './usePagination'
 
 type PaginationConditionals =
@@ -39,8 +42,8 @@ export const Pagination = ({ count, onChange, page, siblings }: PaginationProps)
   })
 
   return (
-    <div>
-      <div>
+    <PaginationStyled>
+      <div className={'container'}>
         <PrevButton disabled={isFirstPage} onClick={handlePreviousPageClicked} />
 
         <MainPaginationButtons
@@ -51,7 +54,7 @@ export const Pagination = ({ count, onChange, page, siblings }: PaginationProps)
 
         <NextButton disabled={isLastPage} onClick={handleNextPageClicked} />
       </div>
-    </div>
+    </PaginationStyled>
   )
 }
 
@@ -64,27 +67,68 @@ type PageButtonProps = NavigationButtonProps & {
   page: number
   selected: boolean
 }
+export const PageButtonItem = css`
+  all: unset;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  color: ${props => props.theme.textColor[100]};
+
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline: 2px solid cyan;
+  }
+
+  &:disabled {
+    cursor: initial;
+    opacity: 1;
+  }
+
+  &:hover:not(&:disabled) {
+    background-color: ${props => props.theme.bodyColor[100]};
+  }
+`
+
+export const PageButtonStyled = styled.button<{ $selected?: boolean }>`
+  ${PageButtonItem}
+
+  ${props => {
+    if (props.$selected) {
+      return css`
+        color: ${props => props.theme.textColor[100]};
+        background-color: ${props => props.theme.bodyColor[100]};
+      `
+    }
+  }}
+`
 
 const PageButton = ({ disabled, onClick, page, selected }: PageButtonProps) => {
   return (
-    <button disabled={selected || disabled} onClick={onClick}>
+    <PageButtonStyled $selected={selected} disabled={selected || disabled} onClick={onClick}>
       {page}
-    </button>
+    </PageButtonStyled>
   )
 }
 const PrevButton = ({ disabled, onClick }: NavigationButtonProps) => {
   return (
-    <button disabled={disabled} onClick={onClick}>
+    <PageButtonStyled disabled={disabled} onClick={onClick}>
       <ArrowBack />
-    </button>
+    </PageButtonStyled>
   )
 }
 
 const NextButton = ({ disabled, onClick }: NavigationButtonProps) => {
   return (
-    <button disabled={disabled} onClick={onClick}>
+    <PageButtonStyled disabled={disabled} onClick={onClick}>
       <ArrowForward />
-    </button>
+    </PageButtonStyled>
   )
 }
 
@@ -113,37 +157,3 @@ const MainPaginationButtons = ({
     </>
   )
 }
-
-// import { BlockedIcon } from '../../icons'
-// import { PaginationStyled } from './Pagination.styled'
-//
-// //https://www.npmjs.com/package/react-paginate
-//
-// type PaginationType = {
-//   onPageChange: (selectedItem: { selected: number }) => void
-//   pageCount: number
-// }
-// export const Pagination = ({ onPageChange, pageCount }: PaginationType) => {
-//   return (
-//     <PaginationStyled
-//       activeClassName={'active'}
-//       breakClassName={'page-item'}
-//       breakLabel={'...'}
-//       breakLinkClassName={'page-link'}
-//       containerClassName={'pagination'}
-//       marginPagesDisplayed={5}
-//       nextClassName={'page-item'}
-//       nextLabel={<BlockedIcon />}
-//       nextLinkClassName={'page-link'}
-//       onPageChange={onPageChange}
-//       pageClassName={'page-item'}
-//       pageCount={pageCount}
-//       pageLinkClassName={'page-link'}
-//       pageRangeDisplayed={3}
-//       previousClassName={'page-item'}
-//       previousLabel={<BlockedIcon />}
-//       previousLinkClassName={'page-link'}
-//       renderOnZeroPageCount={null}
-//     />
-//   )
-// }
