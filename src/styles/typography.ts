@@ -3,7 +3,6 @@ import { css } from 'styled-components'
 export const typography = {
   Bold_text_16() {
     return css`
-      font-family: 'Inter Variable', sans-serif;
       font-weight: 700;
       font-size: 1rem;
       line-height: 1.5rem;
@@ -11,7 +10,6 @@ export const typography = {
   },
   H1() {
     return css`
-      font-family: 'Inter Variable', sans-serif;
       font-weight: 700;
       font-size: 1.25rem;
       line-height: 2.25rem;
@@ -19,7 +17,6 @@ export const typography = {
   },
   H2() {
     return css`
-      font-family: 'Inter Variable', sans-serif;
       font-weight: 700;
       font-size: 1.125rem;
       line-height: 1.5rem;
@@ -27,7 +24,6 @@ export const typography = {
   },
   H3() {
     return css`
-      font-family: 'Inter Variable', sans-serif;
       font-weight: 700;
       font-size: 1rem;
       line-height: 2.25rem;
@@ -35,7 +31,6 @@ export const typography = {
   },
   Large() {
     return css`
-      font-family: 'Inter Variable', sans-serif;
       font-weight: 600;
       font-size: 1.625rem;
       line-height: 2.25rem;
@@ -43,7 +38,6 @@ export const typography = {
   },
   Medium_text_14() {
     return css`
-      font-family: 'Inter Variable', sans-serif;
       font-weight: 500;
       font-size: 0.875rem;
       line-height: 1.5rem;
@@ -51,7 +45,6 @@ export const typography = {
   },
   Semi_bold_small_text() {
     return css`
-      font-family: 'Inter Variable', sans-serif;
       font-weight: 600;
       font-size: 0.75rem;
       line-height: 1rem;
@@ -59,7 +52,6 @@ export const typography = {
   },
   bold_text_14() {
     return css`
-      font-family: 'Inter Variable', sans-serif;
       font-weight: 700;
       font-size: 0.875rem;
       line-height: 1.5rem;
@@ -67,7 +59,6 @@ export const typography = {
   },
   regular_link() {
     return css`
-      font-family: 'Inter Variable', sans-serif;
       font-weight: 400;
       font-size: 0.875rem;
       line-height: 1.5rem;
@@ -75,7 +66,6 @@ export const typography = {
   },
   regular_text_14() {
     return css`
-      font-family: 'Inter Variable', sans-serif;
       font-weight: 400;
       font-size: 0.875rem;
       line-height: 1.5rem;
@@ -83,7 +73,6 @@ export const typography = {
   },
   regular_text_16() {
     return css`
-      font-family: 'Inter Variable', sans-serif;
       font-weight: 400;
       font-size: 1rem;
       line-height: 1.5rem;
@@ -91,7 +80,6 @@ export const typography = {
   },
   small_link() {
     return css`
-      font-family: 'Inter Variable', sans-serif;
       font-weight: 400;
       font-size: 0.75rem;
       line-height: 1rem;
@@ -99,7 +87,6 @@ export const typography = {
   },
   small_text() {
     return css`
-      font-family: 'Inter Variable', sans-serif;
       font-weight: 400;
       font-size: 0.75rem;
       line-height: 1rem;
