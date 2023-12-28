@@ -18,6 +18,9 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@headlessui-float/react": "0.13.0",
+    "@headlessui/react": "1.7.17",
+    "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-select": "2.0.0",
     "clsx": "2.0.0",
     "next": "14.0.3",
@@ -39,7 +42,7 @@
     "@storybook/nextjs": "7.6.3",
     "@storybook/preview-api": "7.6.6",
     "@storybook/react": "7.6.6",
-    "@storybook/react-vite": "7.6.3",
+    "@storybook/react-vite": "7.6.6",
     "@storybook/testing-library": "0.2.2",
     "@types/node": "20.9.0",
     "@types/react": "18.2.43",
