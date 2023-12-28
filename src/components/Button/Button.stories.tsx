@@ -4,6 +4,7 @@ import { Button } from './Button'
 
 const meta: Meta<typeof Button> = {
   argTypes: {
+    onClick: { action: 'clicked' },
     variant: {
       control: { type: 'radio' },
       options: ['primary', 'contained', 'outlined', 'text', 'link'],

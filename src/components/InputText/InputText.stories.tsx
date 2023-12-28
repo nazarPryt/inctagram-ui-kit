@@ -1,9 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { withThemeDecorator } from '../../decorators/withThemeDecorator'
+import { useState } from '@storybook/preview-api'
+
 import { InputText } from './InputText'
 
 const meta = {
+  argTypes: {
+    onChange: { action: 'change' },
+  },
   args: {},
   component: InputText,
   tags: ['autodocs'],
@@ -17,14 +21,29 @@ export const Default: Story = {
   args: {
     label: 'Label',
   },
-  decorators: [withThemeDecorator],
+}
+export const Search: Story = {
+  args: {
+    placeholder: 'Search...',
+    search: true,
+  },
+  render: () => {
+    const [text, setText] = useState('')
+
+    return (
+      <InputText
+        onChange={e => setText(e.currentTarget.value)}
+        onClearClick={() => setText('')}
+        search
+        value={text}
+      />
+    )
+  },
 }
 
 export const Error: Story = {
   args: {
     error: 'Error message',
-
     label: 'Input with error',
   },
-  decorators: [withThemeDecorator],
 }

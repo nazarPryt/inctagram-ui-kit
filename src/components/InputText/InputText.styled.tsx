@@ -1,6 +1,6 @@
-import { styled } from 'styled-components'
+import { css, styled } from 'styled-components'
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ $search?: boolean }>`
   position: relative;
   width: 100%;
   padding: 20px 0 25px 0;
@@ -85,4 +85,40 @@ export const Wrapper = styled.div`
     color: red;
     margin: 5px 0;
   }
+  path {
+    fill: ${props => props.theme.textColor[100]};
+  }
+
+  ${props => {
+    if (props.$search) {
+      return css`
+        input {
+          padding-left: 40px;
+        }
+        .clearButton {
+          all: unset;
+
+          cursor: pointer;
+
+          position: absolute;
+          top: 50%;
+          transform: translateY(-70%);
+          right: 5px;
+
+          width: 25px;
+          height: 25px;
+        }
+
+        .searchIcon {
+          position: absolute;
+          top: 50%;
+          left: 12px;
+          transform: translateY(-70%);
+
+          width: 25px;
+          height: 25px;
+        }
+      `
+    }
+  }}
 `
