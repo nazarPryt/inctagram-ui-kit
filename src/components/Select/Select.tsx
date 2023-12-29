@@ -1,14 +1,12 @@
-import { CSSProperties, FC, Fragment, useMemo } from 'react'
+import { CSSProperties, Fragment, useMemo } from 'react'
 
 import { Listbox } from '@headlessui/react'
 import { Float } from '@headlessui-float/react'
-import { clsx } from 'clsx'
-
-import s from './select.module.scss'
 
 import { ArrowDown } from '../../icons'
-import { Label } from '../label'
-import { Scrollbar } from '../scrollbar'
+import { Label } from '../Label'
+import { Scrollbar } from '../Scrollbar'
+import { SelectStyled } from './Select.styled'
 
 type Option =
   | { disabled?: boolean; label: number; value: number }
@@ -65,7 +63,7 @@ type ConditionalMultipleProps =
 
 export type SelectProps = CommonProps & ConditionalMultipleProps
 
-export const Select: FC<SelectProps> = ({
+export const Select = ({
   className,
   disabled,
   errorMessage,
@@ -79,7 +77,7 @@ export const Select: FC<SelectProps> = ({
   value,
   variant = 'primary',
   width = '100%',
-}) => {
+}: SelectProps) => {
   const isSecondary = variant === 'secondary'
   const showError = !!errorMessage && errorMessage.length > 0
 
@@ -94,20 +92,6 @@ export const Select: FC<SelectProps> = ({
     )
   }, [options])
 
-  const classNames = {
-    content: clsx(s.content, isSecondary && s.secondary),
-    icon: clsx(s.icon, s[variant]),
-    item: clsx(s.item, s[variant]),
-    label: s.label,
-    popper: clsx(s.popper),
-    root: rootClassName,
-    scrollRoot: s.scrollRoot,
-    scrollThumb: s.scrollThumb,
-    scrollViewport: s.scrollViewport,
-    scrollbar: s.scrollbar,
-    trigger: clsx(s.trigger, showError && s.error, s[variant], className),
-    value: clsx(s.value),
-  }
   const selectedOptionsLabels = Array.isArray(value)
     ? value.map(v => optionsMap[v]).join(', ')
     : optionsMap[value]
@@ -116,7 +100,7 @@ export const Select: FC<SelectProps> = ({
 
   return (
     <Listbox {...{ disabled, multiple, onChange, value }}>
-      <div className={classNames.root} style={rootStyles}>
+      <SelectStyled className={rootClassName} style={rootStyles}>
         <Label label={label}>
           <Float
             adaptiveWidth
@@ -126,21 +110,21 @@ export const Select: FC<SelectProps> = ({
             placement={'bottom'}
             portal={portal}
           >
-            <Listbox.Button className={classNames.trigger} type={'button'}>
-              <span className={classNames.value}>{selectedOptionsLabels || placeholder}</span>
-              <span className={classNames.icon}>
+            <Listbox.Button className={`trigger ${className}`} type={'button'}>
+              <span className={'value'}>{selectedOptionsLabels || placeholder}</span>
+              <span className={'icon'}>
                 {/*<ArrowDown size={variant === 'pagination' ? 16 : 24} />*/}
                 <ArrowDown />
               </span>
             </Listbox.Button>
 
-            <Listbox.Options as={'div'} className={classNames.content}>
+            <Listbox.Options as={'div'} className={`content ${isSecondary}`}>
               <Scrollbar maxHeight={158}>
                 {options.map(option => {
                   return (
                     <Listbox.Option
                       as={'button'}
-                      className={classNames.item}
+                      className={'item'}
                       disabled={option.disabled}
                       key={option.value}
                       type={'button'}
@@ -155,7 +139,7 @@ export const Select: FC<SelectProps> = ({
           </Float>
         </Label>
         <>{showError && <span>{errorMessage}</span>}</>
-      </div>
+      </SelectStyled>
     </Listbox>
   )
 }

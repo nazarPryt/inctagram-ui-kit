@@ -20,7 +20,8 @@
   "dependencies": {
     "@headlessui-float/react": "0.13.0",
     "@headlessui/react": "1.7.17",
-    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-label": "2.0.2",
+    "@radix-ui/react-scroll-area": "^1.0.5",
     "@radix-ui/react-select": "2.0.0",
     "clsx": "2.0.0",
     "next": "14.0.3",
@@ -31,7 +32,7 @@
   "devDependencies": {
     "@it-incubator/eslint-config": "1.0.1",
     "@it-incubator/prettier-config": "0.1.2",
-    "@it-incubator/stylelint-config": "0.1.5",
+    "@it-incubator/stylelint-config": "1.0.1",
     "@storybook/addon-a11y": "7.6.3",
     "@storybook/addon-actions": "7.6.6",
     "@storybook/addon-essentials": "7.6.3",
