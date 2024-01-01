@@ -1,187 +1,130 @@
+import * as RadixSelect from '@radix-ui/react-select'
+import { SelectContentProps } from '@radix-ui/react-select'
 import { styled } from 'styled-components'
 
-export const SelectStyled = styled.div`
-  .trigger {
-    cursor: pointer;
+export const SelectWrapper = styled.div`
+  width: 167px;
+  margin: 0 !important;
+  padding: 0;
+`
 
+export const SelectTrigger = styled(RadixSelect.SelectTrigger)`
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+  height: 36px;
+  padding: 6px 12px;
+
+  color: ${props => props.theme.textColor['100']};
+
+  background-color: ${props => props.theme.bodyColor['700']};
+  border: 1px solid ${props => props.theme.bodyColor['100']};
+  border-radius: 0.125rem;
+
+  [data-state='open'] {
+    border-color: ${props => props.theme.bodyColor['100']};
+    border-bottom: none;
+    border-radius: 0.125rem 0.125rem 0 0;
+  }
+
+  span {
     display: flex;
-    gap: 11px;
     align-items: center;
-    justify-content: space-between;
-
-    width: 100%;
-    height: 36px;
-    padding: 9px 8px 8px 12px;
-
-    //font-size: var(--font-size-m);
-    //line-height: var(--line-height-m);
-    color: ${props => props.theme.textColor[100]};
-
-    background-color: ${props => props.theme.bodyColor[100]};
-    border: 1px solid red;
-    border-radius: 10px;
-    outline: none;
-
-    transition:
-      0.2ms background-color,
-      0.2ms color;
-
-    &::placeholder {
-      color: ${props => props.theme.bodyColor[300]};
-      background-color: ${props => props.theme.textColor[100]};
-    }
-
-    &[data-headlessui-state='open'] {
-      border-color: red;
-      border-radius: 5px 5px 0 0;
-    }
-
-    &:disabled {
-      cursor: auto;
-      color: gray;
-    }
-
-    &:focus-visible {
-      outline: ${props => props.theme.textColor[900]};
-    }
-
-    &:hover:not(&:disabled) {
-      background-color: ${props => props.theme.bodyColor[500]};
-    }
-
-    &.error {
-      border-color: red;
-    }
-
-    &.secondary {
-      width: fit-content;
-      background-color: transparent;
-      border: none;
-
-      & > span:first-child {
-        padding-bottom: 1px;
-
-        color: yellow;
-
-        background-image: linear-gradient(to right, yellowgreen 40%, burlywood 0%);
-        background-repeat: repeat-x;
-        background-position: left 12px bottom;
-        background-size: 4px 1px;
-      }
-    }
-
-    &.secondary:focus > span:first-child {
-      color: ${props => props.theme.textColor[500]};
-      background-image: linear-gradient(to right, red 40%, yellowgreen 0%);
-    }
-
-    &.pagination {
-      gap: 2px;
-      height: 24px;
-      padding: 0 2px 0 6px;
-      font-size: 15px;
-    }
+    gap: 12px;
   }
 
-  .value {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .icon {
-    width: 24px;
+  &.pagination {
+    min-width: 3.125rem;
+    gap: 2px;
     height: 24px;
-    transition: 0.2ms transform;
-
-    &.secondary path {
-      stroke: ${props => props.theme.textColor[500]};
-    }
-
-    &.pagination {
-      display: flex;
-      width: 16px;
-      height: 16px;
-    }
-
-    [data-headlessui-state='open'] > & {
-      transform: rotate(180deg);
-    }
-
-    .trigger:disabled > & path {
-      stroke: ${props => props.theme.textColor[900]};
-    }
+    padding: 0 2px 0 6px;
   }
 
-  .item {
-    cursor: pointer;
+  &.error {
+    border-color: ${props => props.theme.palette.danger['500']};
+  }
 
+  &:hover {
+    background: ${props => props.theme.bodyColor['500']};
+    border-color: ${props => props.theme.bodyColor['100']};
+  }
+
+  &:focus {
+    border-color: ${props => props.theme.palette.primary['500']};
+    //outline: 1px solid ${props => props.theme.palette.primary['500']};
+  }
+
+  &[data-placeholder] {
+    color: ${props => props.theme.textColor['100']};
+  }
+
+  &[data-disabled] {
+    pointer-events: none;
+    color: ${props => props.theme.bodyColor['300']};
+  }
+`
+export const SelectIcon = styled(RadixSelect.SelectIcon)`
+  width: 24px;
+  height: 24px;
+  transition: 0.2s;
+
+  &.pagination {
     display: flex;
+    width: 16px;
+    height: 16px;
+  }
 
-    width: 100%;
-    padding: 6px 12px;
+  svg {
+    color: ${props => props.theme.textColor['500']};
+  }
 
-    text-align: start;
+  &[data-state='open'] {
+    transform: rotate(180deg);
+  }
+`
+//https://github.com/radix-ui/primitives/blob/main/packages/react/select/src/Select.tsx
+export const SelectContent = styled(RadixSelect.Content)<SelectContentProps>`
+  cursor: pointer;
+  position: relative;
+  z-index: 500;
+  display: flex;
+  width: 300px;
+  max-height: 100px;
 
-    background: none; /* Remove button default background */
-    border: none; /* Remove button default border */
+  background-color: ${props => props.theme.bodyColor['900']};
+  border: 1px solid ${props => props.theme.bodyColor['100']};
+  border-radius: 0 0 0.125rem 0.125rem;
+
+  &.pagination {
+    width: 20px;
+  }
+`
+export const StyledItem = styled(RadixSelect.Item)`
+  display: flex;
+  padding: 6px 12px;
+  gap: 12px;
+  width: 100%;
+
+  color: ${props => props.theme.textColor['100']};
+  background-color: ${props => props.theme.bodyColor['900']};
+
+  &.pagination {
+    padding: 0 0 0 6px;
+  }
+
+  &[data-highlighted] {
+    color: ${props => props.theme.palette.primary['500']};
+    background-color: ${props => props.theme.bodyColor['300']};
     outline: none;
-
-    transition:
-      0.2ms background-color,
-      0.2ms color;
-
-    &[data-headlessui-state='active'],
-    &[data-headlessui-state='active selected'] {
-      background-color: darkgreen;
-    }
-
-    &[data-headlessui-state='selected'],
-    &[data-headlessui-state='active selected'] {
-      color: blueviolet;
-    }
-
-    &[data-headlessui-state='disabled'] {
-      cursor: auto;
-      color: gray;
-    }
-
-    &.pagination {
-      padding: 0 0 0 6px;
-      //font-size: var(--font-size-s);
-      //line-height: var(--line-height-m);
-    }
   }
 
-  .content {
-    overflow: hidden;
-
-    background-color: ${props => props.theme.bodyColor[100]};
-    border: 1px solid ${props => props.theme.textColor[500]};
-    border-radius: 0 0 5px 5px;
-    outline: none;
-
-    &.secondary {
-      border: 1px solid blue;
-
-      & .item {
-        &[data-headlessui-state~='active'],
-        &[data-headlessui-state~='selected'] {
-          color: burlywood;
-          background-color: black;
-        }
-      }
-    }
-  }
-
-  .viewport {
-    padding: 12px 0;
-  }
-
-  .label {
-    display: inline-block;
-    margin-bottom: 9px;
-    font-size: 20px;
-    color: brown;
+  &[data-disabled] {
+    pointer-events: none;
+    color: ${props => props.theme.textColor['300']};
   }
 `

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { useState } from '@storybook/preview-api'
 
+import { BlockedIcon, ProfileIcon } from '../../icons'
 import { Select } from './Select'
 
 const meta: Meta<typeof Select> = {
@@ -12,20 +13,14 @@ const meta: Meta<typeof Select> = {
 
 export default meta
 
-type Story = StoryObj<typeof Select>
-
-const options = [
+const optionsPrimary = [
   {
     label: 'Apple',
     value: 'apple',
   },
   {
-    label: 'Стажировка для QA manual',
-    value: 'qa-internship',
-  },
-  {
-    disabled: true,
     label: 'Banana',
+
     value: 'banana',
   },
   {
@@ -36,59 +31,122 @@ const options = [
     label: 'Grapes',
     value: 'grapes',
   },
+]
+const optionsPagination = [
   {
-    label: 'Pineapple',
-    value: 'pineapple',
+    label: '1',
+    value: '1',
   },
   {
-    label: 'Cherry',
-    value: 'cherry',
+    label: '2',
+    value: '2',
   },
   {
-    label: 'Grapefruit',
-    value: 'grapefruit',
+    label: '3',
+    value: '3',
   },
   {
-    label: 'Lemon',
-    value: 'lemon',
+    label: '4',
+    value: '4',
+  },
+]
+const Country = [
+  {
+    label: (
+      <>
+        <ProfileIcon />
+        Profile
+      </>
+    ),
+    value: 'ru',
   },
   {
-    label: 'Mango',
-    value: 'mango',
-  },
-  {
-    label: 'Grapes',
-    value: 'grapes',
-  },
-  {
-    label: 'Pineapple',
-    value: 'pineapple',
-  },
-  {
-    label: 'Apple',
-    value: 'apple1',
-  },
-  {
-    label: 'Banana',
-    value: 'banana1',
+    label: (
+      <>
+        <BlockedIcon />
+        Blocked
+      </>
+    ),
+    value: 'en',
   },
 ]
 
-export const Simple: Story = {
-  args: {
-    disabled: false,
-    options,
-    placeholder: 'Все курсы',
-  },
+type Story = StoryObj<typeof Select>
 
-  render: (args: any) => {
-    const [value, setValue] = useState(null)
+export const Simple: Story = {
+  render: () => {
+    const [value, setValue] = useState('')
+
+    return <Select onChange={setValue} options={optionsPrimary} value={value} />
+  },
+}
+
+export const SimpleWithLabel: Story = {
+  render: () => {
+    const [value, setValue] = useState('')
 
     return (
-      <>
-        <Select {...args} onChange={setValue} value={value} />
-        <div>Selected value: {value}</div>
-      </>
+      <Select
+        label={'Select'}
+        onChange={setValue}
+        options={optionsPrimary}
+        placeholder={'select...'}
+        value={value}
+      />
     )
+  },
+}
+
+export const Error: Story = {
+  render: () => {
+    const [value, setValue] = useState('')
+
+    return (
+      <Select
+        label={'Select'}
+        onChange={setValue}
+        options={optionsPrimary}
+        placeholder={'select...'}
+        value={value}
+      />
+    )
+  },
+}
+
+export const Pagination: Story = {
+  render: () => {
+    const [value, setValue] = useState('')
+
+    return (
+      <Select
+        label={'pagination'}
+        onChange={setValue}
+        options={optionsPagination}
+        placeholder={'1'}
+        value={value}
+      />
+    )
+  },
+}
+
+export const FullWidth: Story = {
+  render: () => {
+    const [value, setValue] = useState('')
+
+    return <Select onChange={setValue} options={optionsPrimary} value={value} />
+  },
+}
+
+export const WithIcons: Story = {
+  render: () => {
+    const [value, setValue] = useState('ru')
+
+    return <Select onChange={setValue} options={Country} value={value} />
+  },
+}
+
+export const Disabled: Story = {
+  render: () => {
+    return <Select disabled onChange={() => {}} options={optionsPrimary} value={''} />
   },
 }
