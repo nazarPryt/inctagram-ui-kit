@@ -2,6 +2,8 @@ import * as RadixSelect from '@radix-ui/react-select'
 import { SelectContentProps } from '@radix-ui/react-select'
 import { styled } from 'styled-components'
 
+import { IconColor } from '../../styles/mixins/IconColor'
+
 export const SelectWrapper = styled.div`
   width: 167px;
   margin: 0 !important;
@@ -15,7 +17,6 @@ export const SelectTrigger = styled(RadixSelect.SelectTrigger)`
   gap: 12px;
   align-items: center;
   justify-content: space-between;
-
   box-sizing: border-box;
   height: 36px;
   padding: 6px 12px;
@@ -67,6 +68,7 @@ export const SelectTrigger = styled(RadixSelect.SelectTrigger)`
     pointer-events: none;
     color: ${props => props.theme.bodyColor['300']};
   }
+  ${IconColor}
 `
 export const SelectIcon = styled(RadixSelect.SelectIcon)`
   width: 24px;
@@ -79,9 +81,7 @@ export const SelectIcon = styled(RadixSelect.SelectIcon)`
     height: 16px;
   }
 
-  svg {
-    color: ${props => props.theme.textColor['500']};
-  }
+  ${IconColor}
 
   &[data-state='open'] {
     transform: rotate(180deg);
@@ -93,7 +93,7 @@ export const SelectContent = styled(RadixSelect.Content)<SelectContentProps>`
   position: relative;
   z-index: 500;
   display: flex;
-  width: 300px;
+  width: 100%;
   max-height: 100px;
 
   background-color: ${props => props.theme.bodyColor['900']};
@@ -103,6 +103,7 @@ export const SelectContent = styled(RadixSelect.Content)<SelectContentProps>`
   &.pagination {
     width: 20px;
   }
+  ${IconColor}
 `
 export const StyledItem = styled(RadixSelect.Item)`
   display: flex;
@@ -121,10 +122,25 @@ export const StyledItem = styled(RadixSelect.Item)`
     color: ${props => props.theme.palette.primary['500']};
     background-color: ${props => props.theme.bodyColor['300']};
     outline: none;
+    path {
+      fill: ${props => props.theme.palette.primary[100]};
+    }
+    line {
+      stroke: ${props => props.theme.palette.primary[100]};
+    }
   }
 
   &[data-disabled] {
     pointer-events: none;
     color: ${props => props.theme.textColor['300']};
+  }
+
+  &:hover {
+    path {
+      fill: ${props => props.theme.palette.primary[100]};
+    }
+    line {
+      stroke: ${props => props.theme.palette.primary[100]};
+    }
   }
 `

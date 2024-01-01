@@ -1,4 +1,4 @@
-import { ComponentProps, ReactNode, forwardRef } from 'react'
+import { CSSProperties, ComponentProps, ReactNode, forwardRef } from 'react'
 
 import * as RadixSelect from '@radix-ui/react-select'
 
@@ -24,7 +24,9 @@ type CommonProps = {
   disabled?: boolean
   label?: string
   options: Array<Option>
-  placeholder?: string
+  placeholder?: ReactNode | string
+  variant?: 'pagination' | 'primary'
+  width?: CSSProperties['width']
 }
 export type SelectProps = CommonProps & ConditionalMultipleProps
 
@@ -35,9 +37,12 @@ export const Select = ({
   options,
   placeholder,
   value,
+  variant = 'primary',
+  width,
 }: SelectProps) => {
   const triggerValue = options.find(el => el.value === value)?.label
 
+  const rootStyles = { width }
   // useEffect(() => {
   //   // document.body.style.overflow = 'hidden'
   //   // return () => {
@@ -48,15 +53,15 @@ export const Select = ({
   return (
     <SelectWrapper>
       <RadixSelect.Root defaultValue={defaultValue} disabled={disabled} onValueChange={onChange}>
-        <SelectTrigger style={{ margin: 0 }}>
+        <SelectTrigger className={variant} style={rootStyles}>
           <RadixSelect.Value placeholder={placeholder || ''}>{triggerValue}</RadixSelect.Value>
-          <SelectIcon>
+          <SelectIcon className={variant}>
             <ArrowDown />
           </SelectIcon>
         </SelectTrigger>
-        <SelectContent position={'popper'} style={{ margin: 0 }}>
+        <SelectContent className={variant} position={'popper'}>
           {options.map(option => (
-            <SelectItem key={option.value} value={option.value}>
+            <SelectItem className={variant} key={option.value} value={option.value}>
               {option.label}
             </SelectItem>
           ))}

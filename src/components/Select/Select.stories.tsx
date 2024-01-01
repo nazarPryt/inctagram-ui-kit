@@ -20,7 +20,6 @@ const optionsPrimary = [
   },
   {
     label: 'Banana',
-
     value: 'banana',
   },
   {
@@ -54,20 +53,20 @@ const Country = [
   {
     label: (
       <>
-        <ProfileIcon />
-        Profile
-      </>
-    ),
-    value: 'ru',
-  },
-  {
-    label: (
-      <>
         <BlockedIcon />
         Blocked
       </>
     ),
-    value: 'en',
+    value: 'blocked',
+  },
+  {
+    label: (
+      <>
+        <ProfileIcon />
+        Active
+      </>
+    ),
+    value: 'active',
   },
 ]
 
@@ -77,7 +76,18 @@ export const Simple: Story = {
   render: () => {
     const [value, setValue] = useState('')
 
-    return <Select onChange={setValue} options={optionsPrimary} value={value} />
+    return (
+      <>
+        <Select
+          onChange={setValue}
+          options={optionsPrimary}
+          placeholder={optionsPrimary[0].label}
+          value={value}
+        />
+        <br />
+        <p>Selected value: {value}</p>
+      </>
+    )
   },
 }
 
@@ -86,13 +96,17 @@ export const SimpleWithLabel: Story = {
     const [value, setValue] = useState('')
 
     return (
-      <Select
-        label={'Select'}
-        onChange={setValue}
-        options={optionsPrimary}
-        placeholder={'select...'}
-        value={value}
-      />
+      <>
+        <Select
+          label={'Select'}
+          onChange={setValue}
+          options={optionsPrimary}
+          placeholder={'select...'}
+          value={value}
+        />
+        <br />
+        <p>Selected value: {value}</p>
+      </>
     )
   },
 }
@@ -124,24 +138,23 @@ export const Pagination: Story = {
         options={optionsPagination}
         placeholder={'1'}
         value={value}
+        variant={'pagination'}
       />
     )
   },
 }
 
-export const FullWidth: Story = {
-  render: () => {
-    const [value, setValue] = useState('')
-
-    return <Select onChange={setValue} options={optionsPrimary} value={value} />
-  },
-}
-
 export const WithIcons: Story = {
   render: () => {
-    const [value, setValue] = useState('ru')
+    const [value, setValue] = useState('Not selected')
 
-    return <Select onChange={setValue} options={Country} value={value} />
+    return (
+      <>
+        <Select onChange={setValue} options={Country} placeholder={value} value={value} />
+        <br />
+        <p>Selected value: {value}</p>
+      </>
+    )
   },
 }
 
