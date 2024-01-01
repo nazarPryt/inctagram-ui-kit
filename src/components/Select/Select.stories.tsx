@@ -73,17 +73,17 @@ const Country = [
 type Story = StoryObj<typeof Select>
 
 export const Simple: Story = {
-  render: () => {
+  args: {
+    disabled: false,
+    options: optionsPrimary,
+    placeholder: 'Select',
+  },
+  render: args => {
     const [value, setValue] = useState('')
 
     return (
       <>
-        <Select
-          onChange={setValue}
-          options={optionsPrimary}
-          placeholder={optionsPrimary[0].label}
-          value={value}
-        />
+        <Select {...args} onChange={setValue} value={value} />
         <br />
         <p>Selected value: {value}</p>
       </>
@@ -92,18 +92,18 @@ export const Simple: Story = {
 }
 
 export const SimpleWithLabel: Story = {
-  render: () => {
+  args: {
+    disabled: false,
+    label: 'This is a label',
+    options: optionsPrimary,
+    placeholder: 'Fruits',
+  },
+  render: args => {
     const [value, setValue] = useState('')
 
     return (
       <>
-        <Select
-          label={'Select'}
-          onChange={setValue}
-          options={optionsPrimary}
-          placeholder={'select...'}
-          value={value}
-        />
+        <Select {...args} onChange={setValue} value={value} />
         <br />
         <p>Selected value: {value}</p>
       </>
@@ -112,18 +112,16 @@ export const SimpleWithLabel: Story = {
 }
 
 export const Error: Story = {
-  render: () => {
+  args: {
+    disabled: false,
+    errorMessage: 'Error message here...',
+    options: optionsPrimary,
+    placeholder: 'Все курсы',
+  },
+  render: args => {
     const [value, setValue] = useState('')
 
-    return (
-      <Select
-        label={'Select'}
-        onChange={setValue}
-        options={optionsPrimary}
-        placeholder={'select...'}
-        value={value}
-      />
-    )
+    return <Select {...args} onChange={setValue} value={value} />
   },
 }
 
