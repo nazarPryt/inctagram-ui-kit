@@ -1,6 +1,7 @@
 import { PaginationStyled } from './Pagination.styled'
 import { usePagination } from './hook/usePagination'
 import { MainPaginationButtons } from './ui/MainPaginationButtons'
+import { PerPageSelect } from './ui/PerPageSelect/PerPageSelect'
 import { NextButton, PrevButton } from './ui/PrevNextButtons'
 
 type PaginationConditionals =
@@ -18,14 +19,22 @@ type PaginationConditionals =
 export type PaginationProps = {
   count: number
   onChange: (page: number) => void
-  onPerPageChange?: (itemPerPage: number) => void
+  onPerPageChange?: (itemPerPage: string) => void
   page: number
   perPage?: number
   perPageOptions?: number[]
   siblings?: number
 } & PaginationConditionals
 
-export const Pagination = ({ count, onChange, page, siblings }: PaginationProps) => {
+export const Pagination = ({
+  count,
+  onChange,
+  onPerPageChange,
+  page,
+  perPage,
+  perPageOptions,
+  siblings,
+}: PaginationProps) => {
   const {
     handleMainPageClicked,
     handleNextPageClicked,
@@ -39,6 +48,7 @@ export const Pagination = ({ count, onChange, page, siblings }: PaginationProps)
     page,
     siblings,
   })
+  const showPerPageSelect = !!perPage && !!perPageOptions && !!onPerPageChange
 
   return (
     <PaginationStyled>
@@ -53,6 +63,15 @@ export const Pagination = ({ count, onChange, page, siblings }: PaginationProps)
 
         <NextButton disabled={isLastPage} onClick={handleNextPageClicked} />
       </div>
+      {showPerPageSelect && (
+        <PerPageSelect
+          {...{
+            onPerPageChange,
+            perPage,
+            perPageOptions,
+          }}
+        />
+      )}
     </PaginationStyled>
   )
 }

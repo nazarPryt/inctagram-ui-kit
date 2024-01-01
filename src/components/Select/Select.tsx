@@ -13,7 +13,19 @@ import {
   StyledItem,
 } from './Select.styled'
 
-type Option = { label: ReactNode | string; value: string }
+export type SelectOption = { label: ReactNode | string; value: number | string }
+
+type PaginationConditionals =
+  | {
+      onPerPageChange: (itemPerPage: number) => void
+      perPage: number
+      perPageOptions: number[]
+    }
+  | {
+      onPerPageChange?: never
+      perPage?: null
+      perPageOptions?: never
+    }
 
 type ConditionalMultipleProps = {
   multiple?: true
@@ -27,12 +39,12 @@ type CommonProps = {
   disabled?: boolean
   errorMessage?: string
   label?: string
-  options: Array<Option>
+  options: Array<SelectOption>
   placeholder?: ReactNode | string
   rootClassName?: string
   variant?: 'pagination' | 'primary'
   width?: CSSProperties['width']
-}
+} & PaginationConditionals
 export type SelectProps = CommonProps & ConditionalMultipleProps
 
 //https://www.radix-ui.com/primitives/docs/components/select

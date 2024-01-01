@@ -27,14 +27,14 @@ export const Search: Story = {
     placeholder: 'Search...',
     search: true,
   },
-  render: () => {
+  render: args => {
     const [text, setText] = useState('')
 
     return (
       <InputText
         onChange={e => setText(e.currentTarget.value)}
         onClearClick={() => setText('')}
-        search
+        {...args}
         value={text}
       />
     )

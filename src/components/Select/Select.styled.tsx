@@ -5,8 +5,7 @@ import { styled } from 'styled-components'
 import { IconColor } from '../../styles/mixins/IconColor'
 
 export const SelectWrapper = styled.div`
-  width: 167px;
-  margin: 0 !important;
+  margin: 0;
   padding: 0;
 `
 
