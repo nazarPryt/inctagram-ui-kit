@@ -19,10 +19,7 @@ type PaginationConditionals =
 export type PaginationProps = {
   count: number
   onChange: (page: number) => void
-  onPerPageChange?: (itemPerPage: string) => void
   page: number
-  perPage?: number
-  perPageOptions?: number[]
   siblings?: number
 } & PaginationConditionals
 

@@ -1,24 +1,19 @@
-import type { Meta, StoryObj } from '@storybook/react'
-
 import { useState } from '@storybook/preview-api'
+import { Meta } from '@storybook/react'
 
-import { BlockedIcon, ProfileIcon } from '../../icons'
 import { Select } from './Select'
 
-const meta: Meta<typeof Select> = {
-  component: Select,
-  tags: ['autodocs'],
-  title: 'Components/Select',
-}
-
-export default meta
-
-const optionsPrimary = [
+const options = [
   {
     label: 'Apple',
     value: 'apple',
   },
   {
+    label: 'Стажировка для QA manual',
+    value: 'qa-internship',
+  },
+  {
+    disabled: true,
     label: 'Banana',
     value: 'banana',
   },
@@ -30,134 +25,222 @@ const optionsPrimary = [
     label: 'Grapes',
     value: 'grapes',
   },
-]
-const optionsPagination = [
   {
-    label: '1',
-    value: '1',
+    label: 'Pineapple',
+    value: 'pineapple',
   },
   {
-    label: '2',
-    value: '2',
+    label: 'Cherry',
+    value: 'cherry',
   },
   {
-    label: '3',
-    value: '3',
+    label: 'Grapefruit',
+    value: 'grapefruit',
   },
   {
-    label: '4',
-    value: '4',
-  },
-]
-const Country = [
-  {
-    label: (
-      <>
-        <BlockedIcon />
-        Blocked
-      </>
-    ),
-    value: 'blocked',
+    label: 'Lemon',
+    value: 'lemon',
   },
   {
-    label: (
-      <>
-        <ProfileIcon />
-        Active
-      </>
-    ),
-    value: 'active',
+    label: 'Mango',
+    value: 'mango',
+  },
+  {
+    label: 'Grapes',
+    value: 'grapes',
+  },
+  {
+    label: 'Pineapple',
+    value: 'pineapple',
+  },
+  {
+    label: 'Apple',
+    value: 'apple1',
+  },
+  {
+    label: 'Banana',
+    value: 'banana1',
   },
 ]
 
-type Story = StoryObj<typeof Select>
-
-export const Simple: Story = {
-  args: {
-    disabled: false,
-    options: optionsPrimary,
-    placeholder: 'Select',
-  },
-  render: args => {
-    const [value, setValue] = useState('')
-
-    return (
-      <>
-        <Select {...args} onChange={setValue} value={value} />
-        <br />
-        <p>Selected value: {value}</p>
-      </>
-    )
-  },
+const meta: Meta<typeof Select> = {
+  component: Select,
+  tags: ['autodocs'],
+  title: 'Components/Select',
 }
 
-export const SimpleWithLabel: Story = {
+export default meta
+
+export const Simple = {
   args: {
     disabled: false,
-    label: 'This is a label',
-    options: optionsPrimary,
-    placeholder: 'Fruits',
-  },
-  render: args => {
-    const [value, setValue] = useState('')
-
-    return (
-      <>
-        <Select {...args} onChange={setValue} value={value} />
-        <br />
-        <p>Selected value: {value}</p>
-      </>
-    )
-  },
-}
-
-export const Error: Story = {
-  args: {
-    disabled: false,
-    errorMessage: 'Error message here...',
-    options: optionsPrimary,
+    options,
     placeholder: 'Все курсы',
   },
-  render: args => {
-    const [value, setValue] = useState('')
 
-    return <Select {...args} onChange={setValue} value={value} />
-  },
-}
-
-export const Pagination: Story = {
-  render: () => {
-    const [value, setValue] = useState('')
-
-    return (
-      <Select
-        label={'pagination'}
-        onChange={setValue}
-        options={optionsPagination}
-        placeholder={'1'}
-        value={value}
-        variant={'pagination'}
-      />
-    )
-  },
-}
-
-export const WithIcons: Story = {
-  render: () => {
-    const [value, setValue] = useState('Not selected')
+  render: (args: any) => {
+    const [value, setValue] = useState(null)
 
     return (
       <>
-        <Select onChange={setValue} options={Country} placeholder={value} value={value} />
-        <br />
-        <p>Selected value: {value}</p>
+        <Select {...args} onChange={setValue} value={value} />
+        <div>Selected value: {value}</div>
       </>
     )
   },
 }
 
-export const Disabled: Story = {
-  render: () => {
-    return <Select disabled onChange={() => {}} options={optionsPrimary} value={''} />
+export const SimpleWithLabel = {
+  args: {
+    disabled: false,
+    label: 'Курс*',
+    options,
+    placeholder: 'Все курсы',
+  },
+
+  render: (args: any) => {
+    const [value, setValue] = useState(null)
+
+    return (
+      <>
+        <Select {...args} onChange={setValue} value={value} />
+        <div>Selected value: {value}</div>
+      </>
+    )
   },
 }
+
+export const Multiple = {
+  args: {
+    disabled: false,
+    multiple: true,
+    options,
+    placeholder: 'Все курсы',
+  },
+
+  render: (args: any) => {
+    const [values, setValues] = useState([])
+
+    return (
+      <>
+        <Select {...args} multiple onChange={setValues} value={values} />
+        <div>Selected values: {values.join(', ')}</div>
+      </>
+    )
+  },
+}
+
+export const Error = {
+  args: {
+    disabled: false,
+    error: true,
+    errorMessage: 'Ошибка',
+    options,
+    placeholder: 'Все курсы',
+  },
+
+  render: (args: any) => {
+    const [value, setValue] = useState(null)
+
+    return (
+      <>
+        <Select {...args} onChange={setValue} value={value} />
+        <div>Selected value: {value}</div>
+      </>
+    )
+  },
+}
+
+export const Secondary = {
+  args: {
+    disabled: false,
+    options,
+    placeholder: 'Все курсы',
+    variant: 'secondary',
+  },
+
+  render: (args: any) => {
+    const [value, setValue] = useState(null)
+
+    return (
+      <>
+        <Select {...args} onChange={setValue} value={value} />
+        <div>Selected value: {value}</div>
+      </>
+    )
+  },
+}
+
+export const SmallWithLongItemNames = {
+  args: {
+    disabled: false,
+    options,
+    placeholder: 'Все курсы',
+  },
+
+  render: (args: any) => {
+    const [value, setValue] = useState(null)
+
+    return (
+      <>
+        <div style={{ width: 200 }}>
+          <Select {...args} onChange={setValue} value={value} />
+        </div>
+        <div>Selected value: {value}</div>
+      </>
+    )
+  },
+}
+//
+// export const onModal = () => {
+//   const [value, setValue] = useState(null)
+//   const [value1, setValue1] = useState(null)
+//   const [value2, setValue2] = useState(null)
+//   const [value3, setValue3] = useState(null)
+//   const [open, setOpen] = useState(false)
+//   const handleClose = () => {
+//     setOpen(false)
+//   }
+//
+//   return (
+//     <div>
+//       <button onClick={() => setOpen(!open)}>Open modal</button>
+//       <Modal onClose={handleClose} open={open} title={'Select'}>
+//         <VerticalContainer>
+//           <Select
+//             disabled={false}
+//             onChange={setValue}
+//             options={options}
+//             placeholder={'Все курсы'}
+//             portal={false}
+//             value={value}
+//           />
+//           <Select
+//             disabled={false}
+//             onChange={setValue1}
+//             options={options}
+//             placeholder={'Все курсы'}
+//             portal={false}
+//             value={value1}
+//           />
+//           <Select
+//             disabled={false}
+//             onChange={setValue2}
+//             options={options}
+//             placeholder={'Все курсы'}
+//             portal={false}
+//             value={value2}
+//           />
+//           <Select
+//             disabled={false}
+//             onChange={setValue3}
+//             options={options}
+//             placeholder={'Все курсы'}
+//             portal={false}
+//             value={value3}
+//           />
+//         </VerticalContainer>
+//       </Modal>
+//     </div>
+//   )
+// }

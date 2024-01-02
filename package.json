@@ -18,6 +18,8 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@headlessui-float/react": "^0.13.0",
+    "@headlessui/react": "1.7.17",
     "@radix-ui/react-label": "2.0.2",
     "@radix-ui/react-popover": "1.0.7",
     "@radix-ui/react-scroll-area": "1.0.5",
