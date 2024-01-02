@@ -16,7 +16,7 @@ export default meta
 const optionsPrimary = [
   {
     label: 'Apple',
-    value: 'apple',
+    value: 1,
   },
   {
     label: 'Banana',
@@ -49,7 +49,7 @@ const optionsPagination = [
     value: '4',
   },
 ]
-const Country = [
+const WithIconOptions = [
   {
     label: (
       <>
@@ -148,7 +148,7 @@ export const WithIcons: Story = {
 
     return (
       <>
-        <Select onChange={setValue} options={Country} placeholder={value} value={value} />
+        <Select onChange={setValue} options={WithIconOptions} placeholder={value} value={value} />
         <br />
         <p>Selected value: {value}</p>
       </>

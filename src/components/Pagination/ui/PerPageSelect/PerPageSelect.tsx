@@ -2,7 +2,7 @@ import { Select } from '../../../Select'
 import { PerPageSelectStyled } from './PerPageSelect.styled'
 
 export type PerPageSelectProps = {
-  onPerPageChange: (itemPerPage: string) => void
+  onPerPageChange: (itemPerPage: number) => void
   perPage: number
   perPageOptions: number[]
 }
@@ -15,15 +15,15 @@ export const PerPageSelect = ({ onPerPageChange, perPage, perPageOptions }: PerP
 
   return (
     <PerPageSelectStyled>
-      Показать
+      Show
       <Select
         className={'select'}
         onChange={onPerPageChange}
         options={selectOptions}
-        value={perPage + ''}
+        value={perPage}
         variant={'pagination'}
       />
-      на странице
+      on page
     </PerPageSelectStyled>
   )
 }

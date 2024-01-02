@@ -13,27 +13,24 @@ import {
   StyledItem,
 } from './Select.styled'
 
-export type SelectOption = { label: ReactNode | string; value: number | string }
+type SelectOption =
+  | { disabled?: boolean; label: number; value: number }
+  | { disabled?: boolean; label: number; value: string }
+  | { disabled?: boolean; label: string; value: number }
+  | { disabled?: boolean; label: string; value: string }
+  | { label: ReactNode | string; value: number | string }
 
-type PaginationConditionals =
+type ConditionalValueProps =
   | {
-      onPerPageChange: (itemPerPage: number) => void
-      perPage: number
-      perPageOptions: number[]
+      onChange: (value: number) => void
+      value: number
     }
   | {
-      onPerPageChange?: never
-      perPage?: null
-      perPageOptions?: never
+      onChange: (value: string) => void
+      value: string
     }
 
-type ConditionalMultipleProps = {
-  multiple?: true
-  onChange: (value: string) => void
-  value: string
-}
-
-type CommonProps = {
+export type SelectProps = {
   className?: string
   defaultValue?: string
   disabled?: boolean
@@ -44,8 +41,7 @@ type CommonProps = {
   rootClassName?: string
   variant?: 'pagination' | 'primary'
   width?: CSSProperties['width']
-} & PaginationConditionals
-export type SelectProps = CommonProps & ConditionalMultipleProps
+} & ConditionalValueProps
 
 //https://www.radix-ui.com/primitives/docs/components/select
 
@@ -87,6 +83,7 @@ export const Select = ({
   return (
     <SelectWrapper>
       <Label>{label}</Label>
+      // @ts-ignore
       <RadixSelect.Root defaultValue={defaultValue} disabled={disabled} onValueChange={onChange}>
         <SelectTrigger className={classNames.trigger} style={rootStyles}>
           <RadixSelect.Value placeholder={placeholder || withoutPlaceholder}>
