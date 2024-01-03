@@ -1,77 +1,20 @@
 import { useState } from '@storybook/preview-api'
-import { Meta } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import { Select } from './Select'
-
-const options = [
-  {
-    label: 'Apple',
-    value: 'apple',
-  },
-  {
-    label: 'Стажировка для QA manual',
-    value: 'qa-internship',
-  },
-  {
-    disabled: true,
-    label: 'Banana',
-    value: 'banana',
-  },
-  {
-    label: 'Blueberry',
-    value: 'blueberry',
-  },
-  {
-    label: 'Grapes',
-    value: 'grapes',
-  },
-  {
-    label: 'Pineapple',
-    value: 'pineapple',
-  },
-  {
-    label: 'Cherry',
-    value: 'cherry',
-  },
-  {
-    label: 'Grapefruit',
-    value: 'grapefruit',
-  },
-  {
-    label: 'Lemon',
-    value: 'lemon',
-  },
-  {
-    label: 'Mango',
-    value: 'mango',
-  },
-  {
-    label: 'Grapes',
-    value: 'grapes',
-  },
-  {
-    label: 'Pineapple',
-    value: 'pineapple',
-  },
-  {
-    label: 'Apple',
-    value: 'apple1',
-  },
-  {
-    label: 'Banana',
-    value: 'banana1',
-  },
-]
+import { options, optionsPagination } from './optionsForSelectStory'
 
 const meta: Meta<typeof Select> = {
+  args: { variant: 'primary' },
   component: Select,
   tags: ['autodocs'],
   title: 'Components/Select',
 }
 
 export default meta
+export type Story = StoryObj<typeof Select>
 
-export const Simple = {
+export const Simple: Story = {
   args: {
     disabled: false,
     options,
@@ -90,7 +33,28 @@ export const Simple = {
   },
 }
 
-export const SimpleWithLabel = {
+export const Pagination: Story = {
+  args: {
+    disabled: false,
+    options: optionsPagination,
+    placeholder: '1',
+    variant: 'pagination',
+    width: 50,
+  },
+
+  render: (args: any) => {
+    const [value, setValue] = useState(null)
+
+    return (
+      <>
+        <Select {...args} onChange={setValue} v value={value} />
+        <div>Selected value: {value}</div>
+      </>
+    )
+  },
+}
+
+export const SimpleWithLabel: Story = {
   args: {
     disabled: false,
     label: 'Курс*',
@@ -110,7 +74,7 @@ export const SimpleWithLabel = {
   },
 }
 
-export const Multiple = {
+export const Multiple: Story = {
   args: {
     disabled: false,
     multiple: true,
@@ -130,10 +94,9 @@ export const Multiple = {
   },
 }
 
-export const Error = {
+export const Error: Story = {
   args: {
     disabled: false,
-    error: true,
     errorMessage: 'Ошибка',
     options,
     placeholder: 'Все курсы',
@@ -151,7 +114,7 @@ export const Error = {
   },
 }
 
-export const Secondary = {
+export const Secondary: Story = {
   args: {
     disabled: false,
     options,
@@ -171,7 +134,7 @@ export const Secondary = {
   },
 }
 
-export const SmallWithLongItemNames = {
+export const SmallWithLongItemNames: Story = {
   args: {
     disabled: false,
     options,
@@ -192,7 +155,7 @@ export const SmallWithLongItemNames = {
   },
 }
 //
-// export const onModal = () => {
+// export const onModal: Story = () => {
 //   const [value, setValue] = useState(null)
 //   const [value1, setValue1] = useState(null)
 //   const [value2, setValue2] = useState(null)

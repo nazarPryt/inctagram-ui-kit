@@ -4,11 +4,10 @@ import { Listbox } from '@headlessui/react'
 import { Float } from '@headlessui-float/react'
 import { clsx } from 'clsx'
 
-import s from './select.module.scss'
-
 import { ArrowDown } from '../../icons'
 import { Label } from '../Label'
 import { Scrollbar } from '../Scrollbar'
+import { SelectContent, SelectItem, SelectRoot, SelectTrigger } from './Select.styled'
 
 type Option =
   // | { disabled?: boolean; label: ReactNode; value: number }
@@ -97,18 +96,18 @@ export const Select = ({
   }, [options])
 
   const classNames = {
-    content: clsx(s.content, isSecondary && s.secondary),
-    icon: clsx(s.icon, s[variant]),
-    item: clsx(s.item, s[variant]),
-    label: s.label,
-    popper: clsx(s.popper),
+    content: clsx('content', isSecondary && 'secondary'),
+    icon: clsx('icon', [variant]),
+    item: clsx('item', [variant]),
+    label: 'label',
+    popper: 'popper',
     root: rootClassName,
-    scrollRoot: s.scrollRoot,
-    scrollThumb: s.scrollThumb,
-    scrollViewport: s.scrollViewport,
-    scrollbar: s.scrollbar,
-    trigger: clsx(s.trigger, showError && s.error, s[variant], className),
-    value: clsx(s.value),
+    scrollRoot: 'scrollRoot',
+    scrollThumb: 'scrollThumb',
+    scrollViewport: 'scrollViewport',
+    scrollbar: 'scrollbar',
+    trigger: clsx('trigger', showError && 'error', [variant], className),
+    value: 'value',
   }
   const selectedOptionsLabels = Array.isArray(value)
     ? value.map(v => optionsMap[v]).join(', ')
@@ -118,7 +117,7 @@ export const Select = ({
 
   return (
     <Listbox {...{ disabled, multiple, onChange, value }}>
-      <div className={classNames.root} style={rootStyles}>
+      <SelectRoot className={rootClassName} style={rootStyles}>
         <Label label={label}>
           <Float
             adaptiveWidth
@@ -128,36 +127,40 @@ export const Select = ({
             placement={'bottom'}
             portal={portal}
           >
-            <Listbox.Button className={classNames.trigger} type={'button'}>
-              <span className={classNames.value}>{selectedOptionsLabels || placeholder}</span>
-              <span className={classNames.icon}>
-                <ArrowDown />
-              </span>
-            </Listbox.Button>
+            <SelectTrigger>
+              <Listbox.Button className={classNames.trigger} type={'button'}>
+                <span className={classNames.value}>{selectedOptionsLabels || placeholder}</span>
+                <span className={classNames.icon}>
+                  <ArrowDown />
+                </span>
+              </Listbox.Button>
+            </SelectTrigger>
 
-            <Listbox.Options as={'div'} className={classNames.content}>
-              <Scrollbar maxHeight={158}>
-                {options.map(option => {
-                  // todo: add checkboxes for multi-select
-                  return (
-                    <Listbox.Option
-                      as={'button'}
-                      className={classNames.item}
-                      disabled={option.disabled}
-                      key={option.value}
-                      type={'button'}
-                      value={option.value}
-                    >
-                      <span>{option.label}</span>
-                    </Listbox.Option>
-                  )
-                })}
-              </Scrollbar>
-            </Listbox.Options>
+            <SelectContent>
+              <Listbox.Options as={'div'} className={classNames.content}>
+                <Scrollbar maxHeight={158}>
+                  {options.map(option => {
+                    return (
+                      <SelectItem key={option.value}>
+                        <Listbox.Option
+                          as={'button'}
+                          className={classNames.item}
+                          disabled={option.disabled}
+                          type={'button'}
+                          value={option.value}
+                        >
+                          <span>{option.label}</span>
+                        </Listbox.Option>
+                      </SelectItem>
+                    )
+                  })}
+                </Scrollbar>
+              </Listbox.Options>
+            </SelectContent>
           </Float>
         </Label>
         <>{showError && <p>{errorMessage}</p>}</>
-      </div>
+      </SelectRoot>
     </Listbox>
   )
 }

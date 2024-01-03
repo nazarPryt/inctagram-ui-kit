@@ -4,12 +4,196 @@ import { styled } from 'styled-components'
 
 import { IconColor } from '../../styles/mixins/IconColor'
 
-export const SelectWrapper = styled.div`
-  margin: 0;
-  padding: 0;
+export const SelectRoot = styled.div`
+  .viewport {
+    padding: 12px 0;
+  }
+
+  .label {
+    display: inline-block;
+    margin-bottom: 9px;
+    //font-size: var(--font-size-s);
+    color: blueviolet;
+  }
 `
 
-export const SelectTrigger = styled(RadixSelect.SelectTrigger)`
+export const SelectTrigger = styled.div`
+  .trigger {
+    cursor: pointer;
+
+    display: flex;
+    gap: 11px;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 36px;
+    padding: 9px 8px 8px 12px;
+
+    //font-size: var(--font-size-m);
+    //line-height: var(--line-height-m);
+    //color: var(--color-text-primary);
+
+    background-color: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    outline: none;
+
+    transition:
+      200ms background-color,
+      200ms color;
+
+    &::placeholder {
+      color: blue;
+    }
+
+    &[data-headlessui-state='open'] {
+      border-color: green;
+      border-radius: 5px 5px 0 0;
+    }
+
+    &:disabled {
+      cursor: auto;
+      color: gray;
+    }
+
+    &:focus-visible {
+      //outline: var(--outline-focus);
+    }
+
+    &:hover:not(&:disabled) {
+      background-color: gray;
+    }
+
+    &.error {
+      border-color: red;
+    }
+
+    &.secondary {
+      width: fit-content;
+      background-color: transparent;
+      border: none;
+
+      & > span:first-child {
+        padding-bottom: 1px;
+
+        color: yellow;
+
+        background-image: linear-gradient(to right, yellow 40%, brown 0%);
+        background-repeat: repeat-x;
+        background-position: left 12px bottom;
+        background-size: 4px 1px;
+      }
+    }
+
+    &.secondary:focus > span:first-child {
+      color: cyan;
+      background-image: linear-gradient(to right, yellowgreen 40%, salmon 0%);
+    }
+
+    &.pagination {
+      gap: 2px;
+      height: 24px;
+      padding: 0 2px 0 6px;
+      //font-size: var(--font-size-s);
+    }
+  }
+
+  .value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    transition: 200ms transform;
+
+    &.secondary path {
+      stroke: yellow;
+    }
+
+    &.pagination {
+      display: flex;
+      width: 16px;
+      height: 16px;
+    }
+
+    [data-headlessui-state='open'] > & {
+      transform: rotate(180deg);
+    }
+
+    .trigger:disabled > & path {
+      stroke: grey;
+    }
+  }
+`
+export const SelectContent = styled.div`
+  .content {
+    overflow: hidden;
+
+    background-color: greenyellow;
+    border: 1px solid tan;
+    border-radius: 0 0 5px 5px;
+    outline: none;
+
+    &.secondary {
+      border: 1px solid yellowgreen;
+
+      & .item {
+        &[data-headlessui-state~='active'],
+        &[data-headlessui-state~='selected'] {
+          color: red;
+          background-color: blue;
+        }
+      }
+    }
+  }
+`
+export const SelectItem = styled.div`
+  .item {
+    cursor: pointer;
+
+    display: flex;
+
+    width: 100%;
+    padding: 6px 12px;
+
+    text-align: start;
+
+    background: none; /* Remove button default background */
+    border: none; /* Remove button default border */
+    outline: none;
+
+    transition:
+      200ms background-color,
+      200ms color;
+
+    [data-headlessui-state='active'],
+    [data-headlessui-state='active selected'] {
+      background-color: brown;
+    }
+
+    [data-headlessui-state='selected'],
+    [data-headlessui-state='active selected'] {
+      color: hotpink;
+    }
+
+    [data-headlessui-state='disabled'] {
+      cursor: auto;
+      color: grey;
+    }
+
+    &.pagination {
+      padding: 0 0 0 6px;
+      //font-size: var(--font-size-s);
+      //line-height: var(--line-height-m);
+    }
+  }
+`
+
+export const SelectTriggerd = styled(RadixSelect.SelectTrigger)`
   all: unset;
   cursor: pointer;
   display: flex;
@@ -87,7 +271,7 @@ export const SelectIcon = styled(RadixSelect.SelectIcon)`
   }
 `
 //https://github.com/radix-ui/primitives/blob/main/packages/react/select/src/Select.tsx
-export const SelectContent = styled(RadixSelect.Content)<SelectContentProps>`
+export const SelectContentr = styled(RadixSelect.Content)<SelectContentProps>`
   cursor: pointer;
   position: relative;
   z-index: 500;
@@ -104,7 +288,7 @@ export const SelectContent = styled(RadixSelect.Content)<SelectContentProps>`
   }
   ${IconColor}
 `
-export const StyledItem = styled(RadixSelect.Item)`
+export const StyledItemw = styled(RadixSelect.Item)`
   display: flex;
   padding: 6px 12px;
   gap: 12px;
