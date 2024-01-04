@@ -23,6 +23,21 @@ export const Default: Story = {
   argTypes: { onChange: { action: 'clicked' } },
   render: args => {
     const [page, setPage] = useState(args.page)
+
+    return (
+      <>
+        <Pagination count={args.count} onChange={setPage} page={page} />
+        <br />
+        <p>Page: {page}</p>
+      </>
+    )
+  },
+}
+
+export const WithPerPageSelect: Story = {
+  argTypes: { onChange: { action: 'clicked' } },
+  render: args => {
+    const [page, setPage] = useState(args.page)
     const [perPage, setPerPage] = useState(8)
 
     return (
