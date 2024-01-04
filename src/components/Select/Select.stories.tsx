@@ -18,11 +18,11 @@ export const Simple: Story = {
   args: {
     disabled: false,
     options,
-    placeholder: 'Все курсы',
+    placeholder: 'Select',
   },
 
   render: (args: any) => {
-    const [value, setValue] = useState(null)
+    const [value, setValue] = useState('')
 
     return (
       <>
@@ -57,9 +57,9 @@ export const Pagination: Story = {
 export const SimpleWithLabel: Story = {
   args: {
     disabled: false,
-    label: 'Курс*',
+    label: 'This is a Label',
     options,
-    placeholder: 'Все курсы',
+    placeholder: 'placeholder',
   },
 
   render: (args: any) => {
@@ -79,7 +79,7 @@ export const Multiple: Story = {
     disabled: false,
     multiple: true,
     options,
-    placeholder: 'Все курсы',
+    placeholder: 'Select',
   },
 
   render: (args: any) => {
@@ -97,9 +97,9 @@ export const Multiple: Story = {
 export const Error: Story = {
   args: {
     disabled: false,
-    errorMessage: 'Ошибка',
+    errorMessage: 'Here will be error message',
     options,
-    placeholder: 'Все курсы',
+    placeholder: 'Select',
   },
 
   render: (args: any) => {
@@ -118,7 +118,7 @@ export const Secondary: Story = {
   args: {
     disabled: false,
     options,
-    placeholder: 'Все курсы',
+    placeholder: 'Select',
     variant: 'secondary',
   },
 
@@ -138,7 +138,7 @@ export const SmallWithLongItemNames: Story = {
   args: {
     disabled: false,
     options,
-    placeholder: 'Все курсы',
+    placeholder: 'Select',
   },
 
   render: (args: any) => {

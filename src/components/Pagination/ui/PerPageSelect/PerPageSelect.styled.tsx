@@ -10,6 +10,6 @@ export const PerPageSelectStyled = styled.div`
 
   .select {
     flex-shrink: 0;
-    width: 50px;
+    width: 60px;
   }
 `

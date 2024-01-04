@@ -7,9 +7,9 @@ import { clsx } from 'clsx'
 import { ArrowDown } from '../../icons'
 import { Label } from '../Label'
 import { Scrollbar } from '../Scrollbar'
-import { SelectContent, SelectItem, SelectRoot, SelectTrigger } from './Select.styled'
+import { SelectContent, SelectIcon, SelectItem, SelectRoot, SelectTrigger } from './Select.styled'
 
-type Option =
+export type SelectOptionType =
   // | { disabled?: boolean; label: ReactNode; value: number }
   // | { disabled?: boolean; label: ReactNode; value: string }
   | { disabled?: boolean; label: number; value: number }
@@ -27,7 +27,7 @@ interface CommonProps {
   name?: string
   /** The options to display.
    * {label: string, value: string | number} */
-  options: Array<Option>
+  options: Array<SelectOptionType>
   placeholder?: string
   portal?: boolean
   required?: boolean
@@ -130,9 +130,9 @@ export const Select = ({
             <SelectTrigger>
               <Listbox.Button className={classNames.trigger} type={'button'}>
                 <span className={classNames.value}>{selectedOptionsLabels || placeholder}</span>
-                <span className={classNames.icon}>
+                <SelectIcon className={classNames.icon}>
                   <ArrowDown />
-                </span>
+                </SelectIcon>
               </Listbox.Button>
             </SelectTrigger>
 

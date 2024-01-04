@@ -26,14 +26,19 @@ export const Default: Story = {
     const [perPage, setPerPage] = useState(8)
 
     return (
-      <Pagination
-        count={args.count}
-        onChange={setPage}
-        onPerPageChange={setPerPage}
-        page={page}
-        perPage={perPage}
-        perPageOptions={[5, 8, 12, 100]}
-      />
+      <>
+        <Pagination
+          count={args.count}
+          onChange={setPage}
+          onPerPageChange={setPerPage}
+          page={page}
+          perPage={perPage}
+          perPageOptions={[5, 8, 12, 100]}
+        />
+        <br />
+        <p>Page: {page}</p>
+        <p>Per Page: {perPage}</p>
+      </>
     )
   },
 }

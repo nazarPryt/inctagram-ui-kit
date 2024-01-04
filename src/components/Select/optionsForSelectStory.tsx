@@ -4,7 +4,7 @@ export const options = [
     value: 'apple',
   },
   {
-    label: 'Стажировка для QA manual',
+    label: 'QA manual',
     value: 'qa-internship',
   },
   {
@@ -39,14 +39,6 @@ export const options = [
   {
     label: 'Mango',
     value: 'mango',
-  },
-  {
-    label: 'Apple',
-    value: 'apple1',
-  },
-  {
-    label: 'Banana',
-    value: 'banana1',
   },
 ]
 
