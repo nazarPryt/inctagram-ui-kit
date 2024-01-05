@@ -1,3 +1,5 @@
+import { TableHeadColumnType } from '../TableHead'
+
 export type TableStoryDataType = {
   createdAt: string
   id: number
@@ -15,4 +17,37 @@ export const TableStoryData: TableStoryDataType[] = [
   { createdAt: '2023-11-27T15:16:10.052Z', id: 8, userBan: null, userName: 'Testerz' },
   { createdAt: '2023-11-27T15:42:39.828Z', id: 9, userBan: null, userName: 'wocode4062' },
   { createdAt: '2023-11-27T16:00:33.161Z', id: 11, userBan: null, userName: 'Alex_1127' },
+]
+
+export const TableStoryColumns: TableHeadColumnType[] = [
+  {
+    key: '',
+    sortable: false,
+    title: '',
+  },
+  {
+    key: 'id',
+    sortable: true,
+    title: 'User ID',
+  },
+  {
+    key: 'username',
+    sortable: true,
+    title: 'User name',
+  },
+  {
+    key: 'profile-link',
+    sortable: true,
+    title: 'Profile Link',
+  },
+  {
+    key: 'createdBy',
+    sortable: true,
+    title: 'Data added',
+  },
+  {
+    key: '',
+    sortable: false,
+    title: '',
+  },
 ]

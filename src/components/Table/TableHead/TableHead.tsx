@@ -1,11 +1,13 @@
 import { ComponentPropsWithoutRef } from 'react'
 
+import { ArrowDown, ArrowUpIcon } from '../../../icons'
 import { TableHeadCell } from '../TableHeadCell'
 import { TableRow } from '../TableRow'
 import { TableHeadStyled } from './TableHead.styled'
 
 export type TableHeadColumnType = {
   key: string
+  sortable: boolean
   title: string
 }
 
@@ -14,17 +16,17 @@ export type TableHeadSortType = {
   key: string
 } | null
 
-type TableHeadPropsType = Omit<
+type TableHeadType = Omit<
   ComponentPropsWithoutRef<'thead'> & {
-    columns?: TableHeadColumnType[]
+    columns: TableHeadColumnType[]
     onSort?: (sort: TableHeadSortType) => void
     sort?: TableHeadSortType
   },
   'children'
 >
 
-export const TableHead = ({ columns, onSort, sort, ...restProps }: TableHeadPropsType) => {
-  const handleSort = (key: string, sortable?: boolean) => () => {
+export const TableHead = ({ columns, onSort, sort, ...restProps }: TableHeadType) => {
+  const handleSort = (key: string, sortable: boolean) => () => {
     if (!onSort || !sortable) {
       return
     }
@@ -47,10 +49,14 @@ export const TableHead = ({ columns, onSort, sort, ...restProps }: TableHeadProp
     <TableHeadStyled {...restProps}>
       <TableRow>
         {columns &&
-          columns.map(({ key, sortable, title }) => (
-            <TableHeadCell key={key} onClick={handleSort(key, sortable)}>
+          columns.map(({ key, sortable, title }, index) => (
+            <TableHeadCell key={index} onClick={handleSort(key, sortable)}>
               {title}
-              {sort && sort.key === key && <span>{sort.direction === 'asc' ? '▲' : '▼'}</span>}
+              <span className={'sortIcon'}>
+                {sort && sort.key === key && (
+                  <span>{sort.direction === 'asc' ? <ArrowUpIcon /> : <ArrowDown />}</span>
+                )}
+              </span>
             </TableHeadCell>
           ))}
       </TableRow>

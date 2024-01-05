@@ -1,6 +1,7 @@
 export { ArrowBack } from './arrowBack'
 export { ArrowDown } from './arrowDown'
 export { ArrowForward } from './arrowForward'
+export { ArrowUpIcon } from './arrowUpIcon'
 export { BlockedIcon } from './blockedIcon'
 export { CloseIcon } from './closeIcon'
 export { DotsHorizontal } from './dotsHorizontal'
