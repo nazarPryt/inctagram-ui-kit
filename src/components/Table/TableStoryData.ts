@@ -1,4 +1,4 @@
-import { TableHeadColumnType } from '../TableHead'
+import { TableHeadColumnType } from './TableHead'
 
 export type TableStoryDataType = {
   createdAt: string

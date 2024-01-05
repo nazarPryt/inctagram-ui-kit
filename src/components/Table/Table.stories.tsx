@@ -1,12 +1,12 @@
 import { useState } from '@storybook/preview-api'
 import { Meta, StoryObj } from '@storybook/react'
 
-import { BlockedIcon } from '../../../icons'
-import { TableBody } from '../TableBody'
-import { TableCell } from '../TableCell'
-import { TableHead, TableHeadSortType } from '../TableHead'
-import { TableRow } from '../TableRow'
+import { BlockedIcon } from '../../icons'
 import { Table } from './Table'
+import { TableBody } from './TableBody'
+import { TableCell } from './TableCell'
+import { TableHead, TableHeadSortType } from './TableHead'
+import { TableRow } from './TableRow'
 import { TableStoryColumns, TableStoryData } from './TableStoryData'
 
 const meta: Meta<typeof Table> = {
