@@ -20,11 +20,13 @@
   "dependencies": {
     "@headlessui-float/react": "^0.13.0",
     "@headlessui/react": "1.7.17",
+    "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "2.0.2",
     "@radix-ui/react-popover": "1.0.7",
     "@radix-ui/react-scroll-area": "1.0.5",
     "@radix-ui/react-select": "2.0.0",
     "clsx": "2.0.0",
+    "framer-motion": "^10.17.9",
     "next": "14.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
