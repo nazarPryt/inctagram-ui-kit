@@ -12,19 +12,11 @@ import {
   DialogOverlay,
 } from './Modal.styled'
 
-export type ModalSize = 'lg' | 'md' | 'sm'
-
 export type ModalProps = {
   onClose?: () => void
-  /** The controlled open state of the dialog */
   open: boolean
   showCloseButton?: boolean
-  /** 'sm' | 'md' | 'lg':
-   * sm - 367px,
-   * md - 532px,
-   * lg - 764px.
-   * For other values use className */
-  size?: ModalSize
+  showTitle?: boolean
   title?: string
 } & ComponentProps<'div'>
 
@@ -57,6 +49,7 @@ export const Modal = ({
   onClose,
   open = false,
   showCloseButton = true,
+  showTitle = true,
   title,
 }: ModalProps) => {
   function handleModalClosed() {
@@ -73,17 +66,19 @@ export const Modal = ({
             </DialogOverlay>
             <DialogContent asChild className={className} forceMount>
               <motion.div animate={'visible'} exit={'exit'} initial={'hidden'} variants={dropIn}>
-                <DialogHeader>
-                  <DialogTitle asChild>
-                    <h2 className={'title'}>{title}</h2>
-                  </DialogTitle>
+                {showTitle && (
+                  <DialogHeader>
+                    <DialogTitle asChild>
+                      <h2 className={'title'}>{title}</h2>
+                    </DialogTitle>
 
-                  {showCloseButton && (
-                    <DialogCloseButton>
-                      <CloseIcon />
-                    </DialogCloseButton>
-                  )}
-                </DialogHeader>
+                    {showCloseButton && (
+                      <DialogCloseButton>
+                        <CloseIcon />
+                      </DialogCloseButton>
+                    )}
+                  </DialogHeader>
+                )}
                 <DialogContentBox>{children}</DialogContentBox>
               </motion.div>
             </DialogContent>

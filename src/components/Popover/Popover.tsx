@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, Dispatch, FC, ReactNode, SetStateAction } from 'react'
+import { ComponentPropsWithoutRef, Dispatch, ReactNode, SetStateAction } from 'react'
 
 import { IconButton } from '../IconButton'
 import { PopoverContentWrapper, PopoverWrapper } from './Popover.styled'
@@ -11,8 +11,14 @@ export type PopoverContentProps = {
   setIsPopoverOpen: Dispatch<SetStateAction<boolean>>
 } & ComponentPropsWithoutRef<'div'>
 
-export const Popover: FC<PopoverContentProps> = props => {
-  const { children, icon, isPopoverOpen, onActionHandler, setIsPopoverOpen, ...rest } = props
+export const Popover = ({
+  children,
+  icon,
+  isPopoverOpen,
+  onActionHandler,
+  setIsPopoverOpen,
+  ...rest
+}: PopoverContentProps) => {
   const handleTogglePopover = () => {
     setIsPopoverOpen(prevIsOpen => !prevIsOpen)
   }

@@ -2,7 +2,7 @@ import { ComponentProps, ReactNode, forwardRef } from 'react'
 
 import { PopoverItemWrapper } from './PopoverItem.styled'
 
-type PopoverItemProps = {
+export type PopoverItemProps = {
   icon: ReactNode
   name: string
 } & ComponentProps<'button'>
