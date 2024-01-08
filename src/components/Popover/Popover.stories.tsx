@@ -1,14 +1,11 @@
 import { useState } from '@storybook/preview-api'
 import { Meta, StoryObj } from '@storybook/react'
 
-import { DotsHorizontal } from '../../icons'
-import { Button } from '../Button'
+import { BlockedIcon, DotsHorizontal, PersonRemoveIcon } from '../../icons'
 import { Popover } from './Popover'
+import { PopoverItem } from './PopoverItem'
 
 const meta: Meta<typeof Popover> = {
-  argTypes: {
-    onClick: { action: 'clicked' },
-  },
   component: Popover,
   tags: ['autodocs'],
   title: 'Components/Popover',
@@ -18,23 +15,41 @@ export default meta
 export type Story = StoryObj<typeof Popover>
 
 export const Simple: Story = {
+  args: {},
   render: () => {
     const [popover, setPopover] = useState(false)
 
-    const handleButtonOne = () => {
-      console.log('button 1')
+    const handleDeleteUser = () => {
+      console.log('handleDeleteUser')
       setPopover(false)
     }
-    const handleButtonTwo = () => {
-      console.log('button 2')
+    const handleBunInSystem = () => {
+      console.log('handleBunInSystem')
+      setPopover(false)
+    }
+    const handleMoreInformation = () => {
+      console.log('handleMoreInformation')
       setPopover(false)
     }
 
     return (
       <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Popover icon={<DotsHorizontal />} isPopoverOpen={popover} setIsPopoverOpen={setPopover}>
-          <Button onClick={handleButtonOne}>Button 1</Button>
-          <Button onClick={handleButtonTwo}>Button 2</Button>
+        <Popover icon={<DotsHorizontal />} isOpen={popover} onOpenChange={setPopover}>
+          <PopoverItem
+            icon={<PersonRemoveIcon />}
+            name={'Delete User'}
+            onClick={handleDeleteUser}
+          />
+          <PopoverItem
+            icon={<BlockedIcon />}
+            name={'Bun in the system'}
+            onClick={handleBunInSystem}
+          />
+          <PopoverItem
+            icon={<DotsHorizontal />}
+            name={'More information'}
+            onClick={handleMoreInformation}
+          />
         </Popover>
       </div>
     )

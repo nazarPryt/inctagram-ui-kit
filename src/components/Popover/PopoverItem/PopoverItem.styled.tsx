@@ -1,5 +1,7 @@
 import { styled } from 'styled-components'
 
+import { typography } from '../../../styles'
+
 export const PopoverItemWrapper = styled.button`
   cursor: pointer;
   display: flex;
@@ -13,6 +15,7 @@ export const PopoverItemWrapper = styled.button`
   color: ${props => props.theme.textColor['100']};
   border: none;
   padding: 0;
+  ${typography.regular_text_14}
 
   &:hover {
     color: ${props => props.theme.palette.primary['100']};

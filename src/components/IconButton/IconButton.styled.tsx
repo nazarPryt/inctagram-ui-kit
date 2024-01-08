@@ -1,12 +1,10 @@
 import { css, styled } from 'styled-components'
 
 export type IconButtonProps = {
-  active?: boolean
-  colorful?: boolean
+  $active?: boolean
+  $colorful?: boolean
 }
-export const IconButtonStyled = styled('button').withConfig({
-  shouldForwardProp: prop => !['active', 'colorful'].includes(prop),
-})<IconButtonProps>`
+export const IconButtonStyled = styled.button<IconButtonProps>`
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -23,12 +21,12 @@ export const IconButtonStyled = styled('button').withConfig({
 
   path {
         ${props => {
-          if (props.active) {
+          if (props.$active) {
             return css`
               fill: ${props => props.theme.palette.primary['500']};
             `
           }
-          if (!props.colorful) {
+          if (!props.$colorful) {
             return css`
               fill: ${props =>
                 props.theme.name === 'dark'

@@ -1,34 +1,28 @@
-import { ComponentPropsWithoutRef, Dispatch, ReactNode, SetStateAction } from 'react'
+import { Dispatch, ReactNode, SetStateAction } from 'react'
+
+import * as PopoverRadix from '@radix-ui/react-popover'
 
 import { IconButton } from '../IconButton'
-import { PopoverContentWrapper, PopoverWrapper } from './Popover.styled'
+import { PopoverContent } from './Popover.styled'
 
-export type PopoverContentProps = {
+export type PopoverType = {
   children: ReactNode
   icon: ReactNode
-  isPopoverOpen: boolean
-  onActionHandler?: () => void
-  setIsPopoverOpen: Dispatch<SetStateAction<boolean>>
-} & ComponentPropsWithoutRef<'div'>
+  isOpen: boolean
+  onOpenChange: Dispatch<SetStateAction<boolean>>
+}
+//https://www.radix-ui.com/primitives/docs/components/popover
 
-export const Popover = ({
-  children,
-  icon,
-  isPopoverOpen,
-  onActionHandler,
-  setIsPopoverOpen,
-  ...rest
-}: PopoverContentProps) => {
-  const handleTogglePopover = () => {
-    setIsPopoverOpen(prevIsOpen => !prevIsOpen)
-  }
-
+export const Popover = ({ children, icon, isOpen, onOpenChange }: PopoverType) => {
   return (
-    <PopoverWrapper id={'popoverWrapper'} {...rest}>
-      <IconButton active={isPopoverOpen} onClick={handleTogglePopover}>
-        {icon}
-      </IconButton>
-      {isPopoverOpen && <PopoverContentWrapper>{children}</PopoverContentWrapper>}
-    </PopoverWrapper>
+    <PopoverRadix.Root onOpenChange={onOpenChange} open={isOpen}>
+      <PopoverRadix.Trigger asChild>
+        <IconButton active={isOpen}>{icon}</IconButton>
+      </PopoverRadix.Trigger>
+      <PopoverRadix.Anchor />
+      <PopoverRadix.Portal>
+        <PopoverContent>{children}</PopoverContent>
+      </PopoverRadix.Portal>
+    </PopoverRadix.Root>
   )
 }

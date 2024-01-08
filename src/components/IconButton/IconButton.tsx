@@ -9,18 +9,14 @@ export type IconButtonType = DefaultButtonPropsType & {
   children: ReactNode
   colorful?: boolean
 }
-export const IconButton = forwardRef<HTMLButtonElement, IconButtonType>((props, ref) => {
-  return (
-    <IconButtonStyled
-      active={props.active}
-      colorful={props.colorful}
-      ref={ref}
-      type={'button'}
-      {...props}
-    >
-      {props.children}
-    </IconButtonStyled>
-  )
-})
+export const IconButton = forwardRef<HTMLButtonElement, IconButtonType>(
+  ({ active, children, colorful, ...rest }, ref) => {
+    return (
+      <IconButtonStyled $active={active} $colorful={colorful} ref={ref} type={'button'} {...rest}>
+        {children}
+      </IconButtonStyled>
+    )
+  }
+)
 
 IconButton.displayName = 'IconButton'

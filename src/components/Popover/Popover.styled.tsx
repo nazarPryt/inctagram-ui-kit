@@ -1,6 +1,8 @@
+import * as Popover from '@radix-ui/react-popover'
+import { PopoverContentTypeProps } from '@radix-ui/react-popover'
 import { styled } from 'styled-components'
 
-export const PopoverContentWrapper = styled.div`
+export const PopoverContent = styled(Popover.Content)<PopoverContentTypeProps>`
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -15,13 +17,4 @@ export const PopoverContentWrapper = styled.div`
   color: ${props => props.theme.textColor[100]};
   max-height: 470px;
   overflow-y: auto;
-
-  div {
-    width: 100%;
-    justify-content: left;
-  }
-`
-export const PopoverWrapper = styled.div`
-  position: relative;
-  display: inline-block;
 `

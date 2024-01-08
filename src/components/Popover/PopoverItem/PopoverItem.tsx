@@ -7,13 +7,15 @@ export type PopoverItemProps = {
   name: string
 } & ComponentProps<'button'>
 
-export const PopoverItem = forwardRef<HTMLButtonElement, PopoverItemProps>((props, ref) => {
-  return (
-    <PopoverItemWrapper ref={ref} {...props} onClick={props.onClick}>
-      {props.icon}
-      <span>{props.name}</span>
-    </PopoverItemWrapper>
-  )
-})
+export const PopoverItem = forwardRef<HTMLButtonElement, PopoverItemProps>(
+  ({ icon, name, onClick, ...rest }, ref) => {
+    return (
+      <PopoverItemWrapper ref={ref} {...rest} onClick={onClick}>
+        {icon}
+        <span>{name}</span>
+      </PopoverItemWrapper>
+    )
+  }
+)
 
 PopoverItem.displayName = 'PopoverItem'

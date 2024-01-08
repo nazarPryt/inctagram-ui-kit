@@ -12,30 +12,32 @@ export type InputTextProps = DefaultInputPropsType & {
   onEnter?: (e: KeyboardEvent<HTMLInputElement>) => void
   search?: boolean
 }
-export const InputText = forwardRef<HTMLInputElement, InputTextProps>((props, ref) => {
-  const isShowClearButton = props.onClearClick && props.value
+export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
+  ({ error, label, onClearClick, onEnter, onKeyDown, search, value, ...rest }, ref) => {
+    const isShowClearButton = onClearClick && value
 
-  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (props.onEnter && e.key === 'Enter') {
-      props.onEnter(e)
+    const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+      if (onEnter && e.key === 'Enter') {
+        onEnter(e)
+      }
+      onKeyDown?.(e)
     }
-    props.onKeyDown?.(e)
-  }
 
-  return (
-    <Wrapper $search={props.search}>
-      <input ref={ref} {...props} onKeyDown={handleKeyDown} required />
-      {props.search && <span className={'searchIcon'}>{<SearchIcon />}</span>}
-      <span className={'highlight'}></span>
-      <span className={'bar'}></span>
-      <span className={'error'}>{props.error}</span>
-      <label>{props.label}</label>
-      {isShowClearButton && (
-        <button className={'clearButton'} onClick={props.onClearClick} type={'button'}>
-          {<CloseIcon />}
-        </button>
-      )}
-    </Wrapper>
-  )
-})
+    return (
+      <Wrapper $search={search}>
+        <input ref={ref} {...rest} onKeyDown={handleKeyDown} required />
+        {search && <span className={'searchIcon'}>{<SearchIcon />}</span>}
+        <span className={'highlight'}></span>
+        <span className={'bar'}></span>
+        <span className={'error'}>{error}</span>
+        <label>{label}</label>
+        {isShowClearButton && (
+          <button className={'clearButton'} onClick={onClearClick} type={'button'}>
+            {<CloseIcon />}
+          </button>
+        )}
+      </Wrapper>
+    )
+  }
+)
 InputText.displayName = 'InputText' //https://bobbyhadz.com/blog/react-component-is-missing-display-name
