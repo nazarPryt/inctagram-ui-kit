@@ -16,7 +16,7 @@ export type TableHeadSortType = {
   key: string
 } | null
 
-type TableHeadType = Omit<
+export type TableHeadType = Omit<
   ComponentPropsWithoutRef<'thead'> & {
     columns: TableHeadColumnType[]
     onSort?: (sort: TableHeadSortType) => void
