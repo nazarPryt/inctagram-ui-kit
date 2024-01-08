@@ -15,7 +15,6 @@ const meta: Meta<typeof Dialog> = {
       </p>
     ),
     confirmButtonText: 'Yes',
-    open: true,
     title: 'Some question here',
   },
   component: Dialog,
@@ -39,11 +38,56 @@ export const Simple = {
 
     return (
       <>
-        <span>
-          <Button onClick={handleModalOpened}>Open dialog</Button>
-        </span>
+        <Button onClick={handleModalOpened}>Open dialog</Button>
 
-        <Dialog {...args} invertButtons={false} onClose={handleModalClosed} open={open} />
+        <Dialog {...args} onClose={handleModalClosed} open={open} />
+      </>
+    )
+  },
+}
+export const InvertButtons = {
+  render: (args: any) => {
+    const [open, setOpen] = useState(false)
+
+    function handleModalClosed() {
+      setOpen(false)
+    }
+    function handleModalOpened() {
+      setOpen(true)
+    }
+
+    return (
+      <>
+        <Button onClick={handleModalOpened}>Open dialog</Button>
+
+        <Dialog {...args} invertButtons onClose={handleModalClosed} open={open} />
+      </>
+    )
+  },
+}
+
+export const JustOk = {
+  render: (args: any) => {
+    const [open, setOpen] = useState(false)
+
+    function handleModalClosed() {
+      setOpen(false)
+    }
+    function handleModalOpened() {
+      setOpen(true)
+    }
+
+    return (
+      <>
+        <Button onClick={handleModalOpened}>Open dialog</Button>
+
+        <Dialog
+          {...args}
+          cancelButtonText={''}
+          confirmButtonText={'Ok'}
+          onClose={handleModalClosed}
+          open={open}
+        />
       </>
     )
   },

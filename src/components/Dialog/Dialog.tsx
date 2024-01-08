@@ -1,20 +1,11 @@
-import { clsx } from 'clsx'
-
-import s from './dialog.module.scss'
-
 import { Button } from '../Button'
 import { Modal, ModalProps } from '../Modal'
+import { DialogButtonsBox } from './Dialog.styled'
 
 export type DialogProps = {
   cancelButtonText?: string
-
   confirmButtonText: string
-  /** If true, confirm button will be secondary and cancel button will be primary
-   * defaults to true
-   * */
   invertButtons?: boolean
-
-  /** If not provided, onClose will be executed on Cancel click*/
   onCancelButtonClick?: () => void
   onConfirmButtonClick: () => void
 } & ModalProps
@@ -23,7 +14,7 @@ export const Dialog = ({
   cancelButtonText,
   children,
   confirmButtonText,
-  invertButtons = true,
+  invertButtons = false,
   onCancelButtonClick,
   onConfirmButtonClick,
   ...rest
@@ -38,24 +29,32 @@ export const Dialog = ({
   function handleCancelButtonClicked() {
     onCancelButtonClick ? onCancelButtonClick() : onClose?.()
   }
+  const getConfirmButtonVariant = (
+    invertButtons: boolean,
+    showCancelButton: boolean
+  ): 'outlined' | 'primary' => {
+    if (showCancelButton) {
+      return invertButtons ? 'outlined' : 'primary'
+    }
 
-  const classNames = {
-    buttonsBox: clsx(s.buttonsBox, showCancelButton && s.hasCancelButton),
+    return 'primary'
   }
+  const confirmButtonVariant = getConfirmButtonVariant(invertButtons, showCancelButton)
+  const cancelButtonVariant = invertButtons ? 'primary' : 'outlined'
 
   return (
     <Modal {...rest}>
       {children}
-      <div className={classNames.buttonsBox}>
+      <DialogButtonsBox $showCancelButton={showCancelButton}>
         {showCancelButton && (
-          <Button onClick={handleCancelButtonClicked} variant={'primary'}>
+          <Button onClick={handleCancelButtonClicked} variant={cancelButtonVariant}>
             {cancelButtonText}
           </Button>
         )}
-        <Button onClick={handleConfirmButtonClicked} variant={'outlined'}>
+        <Button onClick={handleConfirmButtonClicked} variant={confirmButtonVariant}>
           {confirmButtonText}
         </Button>
-      </div>
+      </DialogButtonsBox>
     </Modal>
   )
 }

@@ -1,17 +1,14 @@
-import { styled } from 'styled-components'
+import { css, styled } from 'styled-components'
 
-export const DialogButtonsBox = styled.div`
-  .buttonsBox {
-    display: flex;
-    justify-content: flex-end;
+export const DialogButtonsBox = styled.div<{ $showCancelButton: boolean }>`
+  display: flex;
+  justify-content: flex-end;
 
-    &.hasCancelButton {
-      justify-content: space-between;
+  ${props => {
+    if (props.$showCancelButton) {
+      return css`
+        justify-content: space-evenly;
+      `
     }
-
-    &.mobile {
-      flex-direction: column-reverse;
-      gap: 12px;
-    }
-  }
+  }}
 `
