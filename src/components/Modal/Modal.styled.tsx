@@ -1,8 +1,10 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { DialogContentProps } from '@radix-ui/react-dialog'
-import { styled } from 'styled-components'
+import { css, styled } from 'styled-components'
 
+import { typography } from '../../styles'
 import { IconColor } from '../../styles/mixins/IconColor'
+import { ModalSize } from './Modal'
 
 export const DialogOverlay = styled(Dialog.Overlay)`
   position: fixed;
@@ -11,7 +13,7 @@ export const DialogOverlay = styled(Dialog.Overlay)`
   background-color: rgb(0 0 0 / 50%);
 `
 
-export const DialogContent = styled(Dialog.Content)<DialogContentProps>`
+export const DialogContent = styled(Dialog.Content)<DialogContentProps & { $size: ModalSize }>`
   position: fixed;
   z-index: 101;
   top: 50%;
@@ -19,7 +21,23 @@ export const DialogContent = styled(Dialog.Content)<DialogContentProps>`
   transform: translate(-50%, -50%);
   color: ${props => props.theme.textColor[100]};
   background-color: ${props => props.theme.bodyColor['300']};
-  width: 532px;
+
+  ${props => {
+    switch (props.$size) {
+      case 'sm':
+        return css`
+          width: 367px;
+        `
+      case 'lg':
+        return css`
+          width: 764px;
+        `
+      case 'md':
+        return css`
+          width: 532px;
+        `
+    }
+  }}
 `
 export const DialogHeader = styled.header`
   display: flex;
@@ -32,14 +50,14 @@ export const DialogHeader = styled.header`
 
   .title {
     margin: 0;
-    font-size: 17px;
-    font-weight: 500;
+    ${typography.H1}
   }
 `
 
 export const DialogContentBox = styled.div`
   position: relative;
   padding: 23px 24px 36px;
+  ${typography.Bold_text_16}
 `
 export const DialogCloseButton = styled(Dialog.DialogClose)`
   cursor: pointer;

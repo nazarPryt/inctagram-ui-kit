@@ -9,7 +9,7 @@ export const PopoverContent = styled(Popover.Content)<PopoverContentTypeProps>`
   top: 100%;
   left: 50%;
   transform: translateX(-90%);
-  background-color: ${props => props.theme.bodyColor['500']};
+  background-color: ${props => props.theme.bodyColor['300']};
   padding: 10px;
   gap: 10px;
   border: 1px solid ${props => props.theme.bodyColor['100']};

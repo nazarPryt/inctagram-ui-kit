@@ -11,12 +11,14 @@ import {
   DialogHeader,
   DialogOverlay,
 } from './Modal.styled'
+export type ModalSize = 'lg' | 'md' | 'sm'
 
 export type ModalProps = {
   onClose?: () => void
   open: boolean
   showCloseButton?: boolean
   showTitle?: boolean
+  size?: ModalSize
   title?: string
 } & ComponentProps<'div'>
 
@@ -50,6 +52,7 @@ export const Modal = ({
   open = false,
   showCloseButton = true,
   showTitle = true,
+  size = 'md',
   title,
 }: ModalProps) => {
   function handleModalClosed() {
@@ -64,7 +67,7 @@ export const Modal = ({
             <DialogOverlay asChild>
               <motion.div animate={{ opacity: 1 }} exit={{ opacity: 0 }} initial={{ opacity: 0 }} />
             </DialogOverlay>
-            <DialogContent asChild className={className} forceMount>
+            <DialogContent $size={size} asChild className={className} forceMount>
               <motion.div animate={'visible'} exit={'exit'} initial={'hidden'} variants={dropIn}>
                 {showTitle && (
                   <DialogHeader>

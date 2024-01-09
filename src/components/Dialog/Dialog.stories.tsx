@@ -11,7 +11,7 @@ const meta: Meta<typeof Dialog> = {
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci atque blanditiis
         consequatur corporis culpa, eligendi et excepturi fugit iure laboriosam laborum laudantium
-        modi molestias odio quas rem voluptatum. Dolores?
+        modi molestias odio quas rem voluptatum. Dolores? odio quas rem voluptatum. Dolores?
       </p>
     ),
     confirmButtonText: 'Yes',

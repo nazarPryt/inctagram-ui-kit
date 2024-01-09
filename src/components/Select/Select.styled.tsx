@@ -4,14 +4,11 @@ import { typography } from '../../styles'
 import { IconColor } from '../../styles/mixins/IconColor'
 
 export const SelectRoot = styled.div`
-  .viewport {
-    padding: 12px 0;
-  }
+  padding: 12px 0;
 
   .label {
     display: inline-block;
     margin-bottom: 9px;
-    //font-size: var(--font-size-s);
     color: blueviolet;
   }
 `
@@ -42,7 +39,6 @@ export const SelectIcon = styled.span`
 export const SelectTrigger = styled.div`
   .trigger {
     cursor: pointer;
-
     display: flex;
     gap: 11px;
     align-items: center;
@@ -52,8 +48,9 @@ export const SelectTrigger = styled.div`
     height: 36px;
     padding: 9px 8px 8px 12px;
 
-    //font-size: var(--font-size-m);
-    //line-height: var(--line-height-m);
+    ${typography.regular_text_16()}
+    font-family: inherit;
+
     color: ${props => props.theme.textColor[100]};
 
     background-color: ${props => props.theme.bodyColor[700]};
@@ -168,6 +165,8 @@ export const SelectItem = styled.div`
     width: 100%;
     padding: 6px 12px;
 
+    ${typography.regular_text_16()}
+    font-family: inherit;
     text-align: start;
 
     background: none; /* Remove button default background */

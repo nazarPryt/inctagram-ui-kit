@@ -5,6 +5,7 @@ import { lightTheme } from '../src/styles/lightTheme'
 import { darkTheme } from '../src/styles/darkTheme'
 import { GlobalStyles } from '../src/styles/GlobalStyles'
 import { Preview, ReactRenderer } from '@storybook/react'
+import 'react-toastify/dist/ReactToastify.css'
 
 const preview: Preview = {
   parameters: {

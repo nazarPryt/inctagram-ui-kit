@@ -75,6 +75,7 @@ export const WithOutHeader: Story = {
   args: {
     open: false,
     showTitle: false,
+    size: 'lg',
   },
   render: args => {
     const [modal, setModal] = useState(false)
