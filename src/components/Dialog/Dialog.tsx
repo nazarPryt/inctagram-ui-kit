@@ -5,6 +5,7 @@ import { DialogButtonsBox } from './Dialog.styled'
 export type DialogProps = {
   cancelButtonText?: string
   confirmButtonText: string
+  disabled?: boolean
   invertButtons?: boolean
   onCancelButtonClick?: () => void
   onConfirmButtonClick: () => void
@@ -14,6 +15,7 @@ export const Dialog = ({
   cancelButtonText,
   children,
   confirmButtonText,
+  disabled = false,
   invertButtons = false,
   onCancelButtonClick,
   onConfirmButtonClick,
@@ -47,11 +49,19 @@ export const Dialog = ({
       {children}
       <DialogButtonsBox $showCancelButton={showCancelButton}>
         {showCancelButton && (
-          <Button onClick={handleCancelButtonClicked} variant={cancelButtonVariant}>
+          <Button
+            disabled={disabled}
+            onClick={handleCancelButtonClicked}
+            variant={cancelButtonVariant}
+          >
             {cancelButtonText}
           </Button>
         )}
-        <Button onClick={handleConfirmButtonClicked} variant={confirmButtonVariant}>
+        <Button
+          disabled={disabled}
+          onClick={handleConfirmButtonClicked}
+          variant={confirmButtonVariant}
+        >
           {confirmButtonText}
         </Button>
       </DialogButtonsBox>

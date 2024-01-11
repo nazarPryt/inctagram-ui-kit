@@ -25,7 +25,7 @@ const meta: Meta<typeof Dialog> = {
 export default meta
 export type Story = StoryObj<typeof Dialog>
 
-export const Simple = {
+export const Simple: Story = {
   render: (args: any) => {
     const [open, setOpen] = useState(false)
 
@@ -45,7 +45,31 @@ export const Simple = {
     )
   },
 }
-export const InvertButtons = {
+export const InvertButtons: Story = {
+  render: (args: any) => {
+    const [open, setOpen] = useState(false)
+
+    function handleModalClosed() {
+      setOpen(false)
+    }
+    function handleModalOpened() {
+      setOpen(true)
+    }
+
+    return (
+      <>
+        <Button onClick={handleModalOpened}>Open dialog</Button>
+
+        <Dialog {...args} invertButtons onClose={handleModalClosed} open={open} />
+      </>
+    )
+  },
+}
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+    loading: true,
+  },
   render: (args: any) => {
     const [open, setOpen] = useState(false)
 
@@ -66,7 +90,7 @@ export const InvertButtons = {
   },
 }
 
-export const JustOk = {
+export const JustOk: Story = {
   render: (args: any) => {
     const [open, setOpen] = useState(false)
 

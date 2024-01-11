@@ -1,33 +1,14 @@
-import { keyframes, styled } from 'styled-components'
+import { LoaderStyled } from './Loader.styled'
 
-const rotate = keyframes`
-  from {
-    transform: rotate(0);
-  }
-  
-  to {
-    transform: rotate(360deg);
-  }
-`
+export type LoaderType = {
+  fullScreen?: boolean
+  size?: number
+}
 
-export const Loader = styled.span`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 100px;
-  height: 100px;
-  z-index: 10;
-
-  &:before,
-  &:after {
-    content: '';
-    border-radius: 50%;
-    position: absolute;
-    inset: 0;
-    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
-  }
-  &:after {
-    box-shadow: 0 2px 0 #ff3d00 inset;
-    animation: ${rotate} 1s linear infinite;
-  }
-`
+export const Loader = ({ fullScreen = false, size = 50 }: LoaderType) => {
+  return (
+    <LoaderStyled $fullScreen={fullScreen} $size={size}>
+      <span />
+    </LoaderStyled>
+  )
+}
