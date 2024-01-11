@@ -1,7 +1,7 @@
 {
   "name": "@nazar-pryt/inctagram-ui-kit",
   "private": false,
-  "version": "0.0.17",
+  "version": "0.0.18",
   "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -20,6 +20,7 @@
   "dependencies": {
     "@headlessui-float/react": "0.13.0",
     "@headlessui/react": "1.7.17",
+    "@radix-ui/react-avatar": "1.0.4",
     "@radix-ui/react-dialog": "1.0.5",
     "@radix-ui/react-label": "2.0.2",
     "@radix-ui/react-popover": "1.0.7",

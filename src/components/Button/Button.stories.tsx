@@ -6,7 +6,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     onClick: { action: 'clicked' },
     variant: {
-      control: { type: 'radio' },
+      control: { type: 'radio' }, //here you can specify
       options: ['primary', 'contained', 'outlined', 'text', 'link'],
     },
   },

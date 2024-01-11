@@ -1,3 +1,4 @@
+export * from './Avatar'
 export * from './Button'
 export * from './AuthContainer'
 export * from './BackToPrevious'
