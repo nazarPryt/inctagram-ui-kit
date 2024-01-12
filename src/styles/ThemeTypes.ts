@@ -1,4 +1,4 @@
-import { TypographyType } from './typography'
+import { TypographyType } from './mixins'
 
 export type ThemeAppType = 'dark' | 'light'
 

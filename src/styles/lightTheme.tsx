@@ -1,6 +1,6 @@
 import { DefaultTheme } from 'styled-components'
 
-import { typography } from './typography'
+import { typography } from './mixins'
 
 export const lightTheme: DefaultTheme = {
   bodyColor: {
