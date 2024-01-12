@@ -1,5 +1,5 @@
 import * as TabsRadixUI from '@radix-ui/react-tabs'
-import { styled } from 'styled-components'
+import { css, styled } from 'styled-components'
 
 import { TabsProps, TabsVariantType } from './Tabs'
 
@@ -10,11 +10,18 @@ export const TabsRoot = styled(TabsRadixUI.Root)<TabsProps>`
 export const TabsList = styled(TabsRadixUI.List)<{ $variant: TabsVariantType }>`
   display: flex;
   flex-shrink: 0;
-  border-bottom: 2px solid blue;
-
-  &.secondary {
-    border-bottom: none;
-  }
+  ${props => {
+    switch (props.$variant) {
+      case 'primary':
+        return css`
+          border-bottom: 2px solid ${props => props.theme.palette.primary[500]};
+        `
+      case 'secondary':
+        return css`
+          border-bottom: none;
+        `
+    }
+  }}
 `
 export const TabsTrigger = styled(TabsRadixUI.Trigger)<{
   $fullWidth: boolean | undefined
@@ -22,100 +29,89 @@ export const TabsTrigger = styled(TabsRadixUI.Trigger)<{
 }>`
   all: unset;
   cursor: pointer;
+  flex-grow: ${props => (props.$fullWidth ? 1 : 0)};
 
-  &.primary {
-    position: relative;
+  ${props => {
+    switch (props.$variant) {
+      case 'primary':
+        return css`
+          position: relative;
 
-    min-width: 120px;
-    padding: 6px 25px;
+          min-width: 120px;
+          padding: 6px 25px;
 
-    font-weight: 700;
-    color: var(--color-text-inactive);
-    text-align: center;
+          font-weight: 700;
+          color: ${props => props.theme.palette.primary[500]};
+          text-align: center;
 
-    transition: var(--transtition-duration-basic) background-color;
+          transition: 200ms background-color;
 
-    &.fullWidth {
-      flex-grow: 1;
+          &:focus-visible {
+            outline: 2px ${props => props.theme.palette.primary[700]};
+          }
+
+          &:hover {
+            background-color: ${props => props.theme.bodyColor[500]};
+          }
+
+          &[data-state='active'] {
+            background-color: ${props => props.theme.bodyColor[300]};
+
+            &::after {
+              content: '';
+
+              position: absolute;
+              bottom: -2px;
+              left: 0;
+
+              width: 100%;
+              height: 2px;
+
+              background-color: ${props => props.theme.palette.primary[500]};
+            }
+          }
+
+          &:active {
+            background-color: ${props => props.theme.bodyColor[100]};
+          }
+
+          &[data-disabled] {
+            cursor: initial;
+            color: ${props => props.theme.palette.primary[900]};
+            background-color: inherit;
+          }
+        `
+      case 'secondary':
+        return css`
+          padding: 6px 24px;
+
+          font-size: 16px;
+          line-height: 24px;
+          color: ${props => props.theme.textColor[900]};
+
+          transition: 200ms all;
+
+          &:focus-visible {
+            outline: ${props => props.theme.textColor[900]};
+          }
+
+          &:hover {
+            background-color: ${props => props.theme.bodyColor[300]};
+          }
+
+          &[data-state='active'] {
+            color: ${props => props.theme.textColor[100]};
+            background-color: ${props => props.theme.bodyColor[100]};
+          }
+
+          &[data-disabled] {
+            cursor: initial;
+            color: ${props => props.theme.textColor[900]};
+            background-color: inherit;
+          }
+        `
     }
-
-    &:focus-visible {
-      background-color: var(--color-bg-focus);
-    }
-
-    &:hover {
-      background-color: var(--color-action-hover);
-    }
-
-    &[data-state='active'] {
-      color: var(--color-accent-500);
-
-      &::after {
-        content: '';
-
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-
-        width: 100%;
-        height: 2px;
-
-        background-color: var(--color-accent-500);
-      }
-    }
-
-    &:active {
-      background-color: var(--color-action-active);
-    }
-
-    &[data-disabled] {
-      cursor: initial;
-      color: var(--color-text-disabled);
-      background-color: inherit;
-    }
-  }
-
-  &.secondary {
-    padding: 6px 24px;
-
-    font-size: 16px;
-    line-height: 24px;
-    color: var(--color-text-secondary);
-
-    border: 1px solid var(--color-border-input-primary);
-    border-left: none;
-
-    transition: var(--transtition-duration-basic) all;
-
-    &:first-child {
-      border-left: 1px solid var(--color-border-input-primary);
-      border-radius: var(--border-radius-s) 0 0 var(--border-radius-s);
-    }
-
-    &:last-child {
-      border-radius: 0 var(--border-radius-s) var(--border-radius-s) 0;
-    }
-
-    &:focus-visible {
-      outline: var(--outline-focus);
-    }
-
-    &:hover {
-      background-color: var(--color-bg-focus);
-    }
-
-    &[data-state='active'] {
-      color: var(--color-text-primary-contrast);
-      background-color: var(--color-bg-contrast);
-      border-color: var(--color-bg-contrast);
-    }
-
-    &[data-disabled] {
-      cursor: initial;
-      color: var(--color-text-disabled);
-      background-color: inherit;
-    }
-  }
+  }}
 `
 export const TabsContent = styled(TabsRadixUI.Content)`
   color: ${props => props.theme.textColor[100]};

@@ -6,20 +6,19 @@ const meta = {
   args: {
     children: (
       <>
-        <TabContent value={'sprints'}>Контент спринтов</TabContent>
-        <TabContent value={'weeks'}>Контент недель</TabContent>
-        <TabContent value={'subjects'}>Контент тем</TabContent>
+        <TabContent value={'sprints'}>Content for sprints</TabContent>
+        <TabContent value={'weeks'}>Content for weeks</TabContent>
+        <TabContent value={'subjects'}>Content for subjects</TabContent>
       </>
     ),
     defaultValue: 'sprints',
     tabs: [
-      { title: 'Спринты', value: 'sprints' },
-      { title: 'Недели', value: 'weeks' },
-      { title: 'Темы', value: 'subjects' },
+      { title: 'Sprints', value: 'sprints' },
+      { title: 'Weeks', value: 'weeks' },
+      { title: 'Subject', value: 'subjects' },
     ],
   },
   component: Tabs,
-  parameters: { layout: 'centered' },
   tags: ['autodocs'],
   title: 'Components/Tabs',
 } satisfies Meta<typeof Tabs>
@@ -30,8 +29,8 @@ type Story = StoryObj<typeof meta>
 export const PrimaryWithDisabled: Story = {
   args: {
     tabs: [
-      { title: 'Спринты', value: 'sprints' },
-      { title: 'Недели', value: 'weeks' },
+      { title: 'Sprints', value: 'sprints' },
+      { title: 'Weeks', value: 'weeks' },
       { disabled: true, title: 'Темы', value: 'subjects' },
     ],
   },
@@ -53,8 +52,8 @@ export const SecondaryWithDisabled: Story = {
   args: {
     ...Secondary.args,
     tabs: [
-      { title: 'Спринты', value: 'sprints' },
-      { title: 'Недели', value: 'weeks' },
+      { title: 'Sprints', value: 'sprints' },
+      { title: 'Weeks', value: 'weeks' },
       { disabled: true, title: 'Темы', value: 'subjects' },
     ],
   },

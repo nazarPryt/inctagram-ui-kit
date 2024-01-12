@@ -46,12 +46,6 @@ export const Tabs = ({
   value,
   variant = 'primary',
 }: TabsProps) => {
-  // const classNames = {
-  //   list: clsx(s.list, s[variant]),
-  //   root: s.root,
-  //   trigger: clsx(s.trigger, fullWidth && s.fullWidth, s[variant]),
-  // }
-
   return (
     <TabsRoot defaultValue={defaultValue} onValueChange={onValueChange} value={value}>
       <TabsList $variant={variant}>
