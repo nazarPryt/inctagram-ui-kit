@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/react'
+import { Meta, type StoryObj } from '@storybook/react'
 
 import { Scrollbar } from './Scrollbar'
 
@@ -14,8 +14,9 @@ const meta: Meta<typeof Scrollbar> = {
 }
 
 export default meta
+type Story = StoryObj<typeof meta>
 
-export const VerticalScrollbar = {
+export const VerticalScrollbar: Story = {
   args: {
     children: (
       <p style={{ width: '100px' }}>
@@ -38,7 +39,7 @@ export const VerticalScrollbar = {
   },
 }
 
-export const HorizontalScrollbar = {
+export const HorizontalScrollbar: Story = {
   args: {
     children: (
       <p style={{ width: '400px' }}>

@@ -1,14 +1,19 @@
-import { BackToPreviousWrapper } from './BackToPrevious.styled'
-import { BackToPreviousIcon } from './BackToPreviousIcon'
+import { ComponentPropsWithoutRef } from 'react'
 
-export type PropsType = {
-  href: string
+import { LinkProps } from 'next/link'
+
+import { ArrowLeft } from '../../icons'
+import { BackToPreviousWrapper } from './BackToPrevious.styled'
+
+export type BackToPreviousType = {
   title: string
-}
-export const BackToPrevious = ({ href, title }: PropsType) => {
+} & LinkProps &
+  Omit<ComponentPropsWithoutRef<'a'>, 'href' | 'title'>
+
+export const BackToPrevious = ({ title, ...rest }: BackToPreviousType) => {
   return (
-    <BackToPreviousWrapper href={href}>
-      <BackToPreviousIcon />
+    <BackToPreviousWrapper {...rest}>
+      <ArrowLeft />
       <span>{title}</span>
     </BackToPreviousWrapper>
   )
