@@ -1,21 +1,31 @@
-import { ComponentProps, ReactNode, forwardRef } from 'react'
+import { ComponentProps, ElementType, ReactNode } from 'react'
 
 import { PopoverItemWrapper } from './PopoverItem.styled'
 
-export type PopoverItemProps = {
+const ButtonDefaultAs = 'button' as const
+
+type ButtonDefaultAsType = typeof ButtonDefaultAs
+type ButtonOwnProps<E extends ElementType> = {
+  as?: E
   icon: ReactNode
   name: string
-} & ComponentProps<'button'>
+}
 
-export const PopoverItem = forwardRef<HTMLButtonElement, PopoverItemProps>(
-  ({ icon, name, onClick, ...rest }, ref) => {
-    return (
-      <PopoverItemWrapper ref={ref} {...rest} onClick={onClick}>
-        {icon}
-        <span>{name}</span>
-      </PopoverItemWrapper>
-    )
-  }
-)
+export type PopoverItemProps<E extends ElementType> = ButtonOwnProps<E> &
+  Omit<ComponentProps<E>, keyof ButtonOwnProps<E>>
 
-PopoverItem.displayName = 'PopoverItem'
+export const PopoverItem = <E extends ElementType = ButtonDefaultAsType>({
+  as,
+  icon,
+  name,
+  ...otherProps
+}: PopoverItemProps<E>) => {
+  const Tag = as || ButtonDefaultAs
+
+  return (
+    <PopoverItemWrapper as={Tag} {...otherProps}>
+      {icon}
+      <span>{name}</span>
+    </PopoverItemWrapper>
+  )
+}

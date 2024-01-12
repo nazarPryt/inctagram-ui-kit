@@ -7,6 +7,7 @@ import { PopoverItem } from './PopoverItem'
 
 const meta: Meta<typeof Popover> = {
   component: Popover,
+  parameters: { layout: 'centered' },
   tags: ['autodocs'],
   title: 'Components/Popover',
 }
@@ -27,31 +28,17 @@ export const Simple: Story = {
       console.log('handleBunInSystem')
       setPopover(false)
     }
-    const handleMoreInformation = () => {
-      console.log('handleMoreInformation')
-      setPopover(false)
-    }
 
     return (
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <Popover icon={<DotsHorizontal />} isOpen={popover} onOpenChange={setPopover}>
-          <PopoverItem
-            icon={<PersonRemoveIcon />}
-            name={'Delete User'}
-            onClick={handleDeleteUser}
-          />
-          <PopoverItem
-            icon={<BlockedIcon />}
-            name={'Bun in the system'}
-            onClick={handleBunInSystem}
-          />
-          <PopoverItem
-            icon={<DotsHorizontal />}
-            name={'More information'}
-            onClick={handleMoreInformation}
-          />
-        </Popover>
-      </div>
+      <Popover icon={<DotsHorizontal />} isOpen={popover} onOpenChange={setPopover}>
+        <PopoverItem icon={<PersonRemoveIcon />} name={'Delete User'} onClick={handleDeleteUser} />
+        <PopoverItem
+          icon={<BlockedIcon />}
+          name={'Bun in the system'}
+          onClick={handleBunInSystem}
+        />
+        <PopoverItem as={'a'} href={'/'} icon={<DotsHorizontal />} name={'More information'} />
+      </Popover>
     )
   },
 }

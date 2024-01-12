@@ -68,7 +68,6 @@ export const InvertButtons: Story = {
 export const Disabled: Story = {
   args: {
     disabled: true,
-    loading: true,
   },
   render: (args: any) => {
     const [open, setOpen] = useState(false)
