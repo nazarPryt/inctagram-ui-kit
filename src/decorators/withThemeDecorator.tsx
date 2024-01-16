@@ -1,6 +1,8 @@
 import { Decorator } from '@storybook/react'
 import { ThemeProvider } from 'styled-components'
 
+import 'react-loading-skeleton/dist/skeleton.css'
+
 import { ToastContainerStyled } from '../components/Toast/Toast.styled'
 import { GlobalStyles } from '../styles/GlobalStyles'
 import { darkTheme } from '../styles/darkTheme'

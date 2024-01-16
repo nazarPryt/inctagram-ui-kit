@@ -13,7 +13,7 @@ const meta: Meta<typeof Popover> = {
 }
 
 export default meta
-export type Story = StoryObj<typeof Popover>
+type Story = StoryObj<typeof Popover>
 
 export const Simple: Story = {
   args: {},

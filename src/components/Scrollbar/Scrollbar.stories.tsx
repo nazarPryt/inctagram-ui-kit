@@ -10,6 +10,8 @@ const meta: Meta<typeof Scrollbar> = {
     },
   },
   component: Scrollbar,
+  parameters: { layout: 'centered' },
+  tags: ['autodocs'],
   title: 'Components/Scrollbar',
 }
 
