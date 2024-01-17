@@ -81,4 +81,7 @@ export const GlobalStyles = createGlobalStyle`
     rgba(0, 0, 0, 1) 75%,
     transparent)
   }
+  .skeletonContainerFlex {
+      flex: 1
+  }
 `
