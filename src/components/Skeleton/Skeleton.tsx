@@ -8,5 +8,5 @@ export type SkeletonProps = SkeletonPropsBase & {
 /** https://www.npmjs.com/package/react-loading-skeleton */
 
 export const Skeleton = ({ containerFlex = true, ...props }: SkeletonProps) => {
-  return <SkeletonStyled $containerFlex={containerFlex} borderRadius={'10px'} {...props} />
+  return <SkeletonStyled $containerFlex={containerFlex} borderRadius={'6px'} {...props} />
 }
