@@ -31,3 +31,9 @@ export const ChangedSize: Story = {
     userName: 'naza pryt',
   },
 }
+export const OneLetterName: Story = {
+  args: {
+    size: 80,
+    userName: 'nazar',
+  },
+}

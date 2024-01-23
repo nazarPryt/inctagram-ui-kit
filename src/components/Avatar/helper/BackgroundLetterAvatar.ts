@@ -18,8 +18,17 @@ const stringToColor = (string: string) => {
 }
 
 export const stringAvatar = (name: string) => {
+  let children = ''
+
+  if (name.split(' ').length === 2) {
+    children = `${name.split(' ')[0][0].toUpperCase()} ${name.split(' ')[1][0].toUpperCase()}`
+  }
+  if (name.split(' ').length === 1) {
+    children = `${name.split(' ')[0][0].toUpperCase()}`
+  }
+
   return {
-    children: `${name.split(' ')[0][0].toUpperCase()} ${name.split(' ')[1][0].toUpperCase()}`,
+    children,
     style: {
       backgroundColor: stringToColor(name),
     },
