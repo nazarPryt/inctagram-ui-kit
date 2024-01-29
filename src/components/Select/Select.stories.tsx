@@ -7,7 +7,7 @@ import { Button } from '../Button'
 import { Dialog } from '../Dialog'
 import { Modal } from '../Modal'
 import { Select } from './Select'
-import { options, optionsPagination } from './optionsForSelectStory'
+import { options, optionsPagination, optionsWithIcon } from './optionsForSelectStory'
 
 const meta: Meta<typeof Select> = {
   args: { variant: 'primary' },
@@ -92,8 +92,30 @@ export const Multiple: Story = {
 
     return (
       <>
-        <Select {...args} multiple onChange={setValues} value={values} />
+        <Select {...args} onChange={setValues} value={values} />
         <div>Selected values: {values.join(', ')}</div>
+      </>
+    )
+  },
+}
+
+export const WithIcon: Story = {
+  args: {
+    disabled: false,
+    multiple: false,
+    options: optionsWithIcon,
+    placeholder: 'Language Select',
+    width: 200,
+  },
+  parameters: { layout: 'centered' },
+
+  render: (args: any) => {
+    const [value, setValue] = useState(optionsWithIcon[0].value)
+
+    return (
+      <>
+        <Select {...args} onChange={setValue} value={value} />
+        <div>Selected values: {value}</div>
       </>
     )
   },

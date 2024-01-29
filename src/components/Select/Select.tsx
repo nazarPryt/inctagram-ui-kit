@@ -1,4 +1,4 @@
-import { CSSProperties, Fragment, useMemo } from 'react'
+import { CSSProperties, Fragment, ReactNode, useMemo } from 'react'
 
 import { Listbox } from '@headlessui/react'
 import { Float } from '@headlessui-float/react'
@@ -10,12 +10,10 @@ import { Scrollbar } from '../Scrollbar'
 import { SelectContent, SelectIcon, SelectItem, SelectRoot, SelectTrigger } from './Select.styled'
 
 export type SelectOptionType =
-  // | { disabled?: boolean; label: ReactNode; value: number }
-  // | { disabled?: boolean; label: ReactNode; value: string }
-  | { disabled?: boolean; label: number; value: number }
-  | { disabled?: boolean; label: number; value: string }
-  | { disabled?: boolean; label: string; value: number }
-  | { disabled?: boolean; label: string; value: string }
+  | { disabled?: boolean; icon?: ReactNode; label: number; value: number }
+  | { disabled?: boolean; icon?: ReactNode; label: number; value: string }
+  | { disabled?: boolean; icon?: ReactNode; label: string; value: number }
+  | { disabled?: boolean; icon?: ReactNode; label: string; value: string }
 
 interface CommonProps {
   /** applied to the trigger */

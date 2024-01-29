@@ -1,4 +1,7 @@
-export const options = [
+import { FlagRus, FlagUK } from '../../icons'
+import { SelectOptionType } from './Select'
+
+export const options: SelectOptionType[] = [
   {
     label: 'Apple',
     value: 'apple',
@@ -42,7 +45,7 @@ export const options = [
   },
 ]
 
-export const optionsPagination = [
+export const optionsPagination: SelectOptionType[] = [
   {
     label: 1,
     value: 1,
@@ -67,5 +70,18 @@ export const optionsPagination = [
   {
     label: 6,
     value: 6,
+  },
+]
+
+export const optionsWithIcon: SelectOptionType[] = [
+  {
+    icon: <FlagRus />,
+    label: 'Rus',
+    value: 'ru',
+  },
+  {
+    icon: <FlagUK />,
+    label: 'Eng',
+    value: 'en',
   },
 ]

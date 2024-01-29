@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 
-import { IconColor } from '../../../styles/mixins/IconColor'
+import { IconColor } from '../../../styles'
 
 export const TableHeadCellStyled = styled.th`
   padding: 6px 24px;
