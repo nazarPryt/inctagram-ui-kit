@@ -19,7 +19,6 @@ export const Popover = ({ children, icon, isOpen, onOpenChange }: PopoverType) =
       <PopoverRadix.Trigger asChild>
         <IconButton active={isOpen}>{icon}</IconButton>
       </PopoverRadix.Trigger>
-      <PopoverRadix.Anchor />
       <PopoverRadix.Portal>
         <PopoverContent>{children}</PopoverContent>
       </PopoverRadix.Portal>

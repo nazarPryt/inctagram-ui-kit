@@ -17,8 +17,6 @@ export const AvatarRoot = styled(AvatarPrimitive.Root)<{ $size: number }>`
 export const AvatarImage = styled(AvatarPrimitive.Image)`
   border-radius: inherit;
   object-fit: cover;
-  width: 100%;
-  height: 100%;
 `
 
 export const AvatarFallback = styled(AvatarPrimitive.Fallback)<{ $size: number }>`
