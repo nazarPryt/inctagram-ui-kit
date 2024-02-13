@@ -2,11 +2,12 @@ import { Component } from 'react'
 
 import { css, styled } from 'styled-components'
 
-import { ButtonProps } from './Button'
+import { ButtonVariantType } from './Button'
 
-export const ComponentButton = styled(Component<ButtonProps>).withConfig({
-  shouldForwardProp: prop => !['fullwidth'].includes(prop),
-})<{ fullwidth?: boolean }>`
+export const ComponentButton = styled(Component)<{
+  $fullwidth?: boolean
+  $variant: ButtonVariantType
+}>`
   border-radius: 2px;
   padding: 6px 24px;
   cursor: pointer;
@@ -16,33 +17,33 @@ export const ComponentButton = styled(Component<ButtonProps>).withConfig({
   font-family: Inter, sans-serif;
   letter-spacing: 0.7px;
   text-decoration: none;
-  width: ${props => (props.fullwidth ? '100%' : '')};
+  width: ${props => (props.$fullwidth ? '100%' : '')};
 
   ${props => {
-    switch (props.variant) {
+    switch (props.$variant) {
       case 'contained':
         return css`
-          background-color: ${({ theme }) => theme.bodyColor[100]};
-          color: ${({ theme }) => theme.textColor[900]};
+          background-color: ${({ theme }) => theme.bodyColor[300]};
+          color: ${({ theme }) => theme.textColor[100]};
 
           &:active {
-            background-color: ${({ theme }) => theme.palette.primary[700]};
+            background-color: ${({ theme }) => theme.bodyColor[500]};
           }
 
           &:hover {
             background-color: ${({ theme }) => theme.bodyColor[100]};
-            color: ${({ theme }) => theme.textColor[300]};
+            color: ${({ theme }) => theme.textColor[100]};
           }
 
           &:focus {
-            background-color: ${({ theme }) => theme.bodyColor[100]};
-            color: ${({ theme }) => theme.textColor[900]};
-            border: 2px solid ${({ theme }) => theme.palette.primary[700]};
+            background-color: ${({ theme }) => theme.bodyColor[300]};
+            color: ${({ theme }) => theme.textColor[100]};
+            outline: 2px solid ${({ theme }) => theme.palette.primary[300]};
           }
 
           &:disabled {
-            background-color: ${({ theme }) => theme.bodyColor[900]};
-            color: ${({ theme }) => theme.textColor[100]};
+            background-color: ${({ theme }) => theme.bodyColor[500]};
+            color: ${({ theme }) => theme.textColor[900]};
             cursor: not-allowed;
           }
         `
@@ -64,7 +65,7 @@ export const ComponentButton = styled(Component<ButtonProps>).withConfig({
 
           &:focus {
             color: ${({ theme }) => theme.palette.primary[500]};
-            border: 2px solid ${({ theme }) => theme.palette.primary[700]};
+            outline: 2px solid ${({ theme }) => theme.palette.primary[700]};
           }
 
           &:disabled {
@@ -76,24 +77,24 @@ export const ComponentButton = styled(Component<ButtonProps>).withConfig({
         return css`
           background-color: inherit;
           color: ${({ theme }) => theme.palette.primary[500]};
-          border: 1px solid ${({ theme }) => theme.palette.primary[500]};
+          outline: 1px solid ${({ theme }) => theme.palette.primary[500]};
 
           &:active {
             color: ${({ theme }) => theme.palette.primary[700]};
           }
 
           &:hover {
-            border: 1px solid ${({ theme }) => theme.palette.primary[100]};
+            outline: 1px solid ${({ theme }) => theme.palette.primary[100]};
             color: ${({ theme }) => theme.palette.primary[100]};
           }
 
           &:focus {
             color: ${({ theme }) => theme.palette.primary[700]};
-            border: 2px solid ${props => props.theme.palette.primary[700]};
+            outline: 2px solid ${props => props.theme.palette.primary[700]};
           }
 
           &:disabled {
-            border: 2px solid ${props => props.theme.palette.primary[900]};
+            outline: 2px solid ${props => props.theme.palette.primary[900]};
             color: ${({ theme }) => theme.palette.primary[900]};
             cursor: not-allowed;
           }

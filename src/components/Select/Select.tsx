@@ -82,17 +82,22 @@ export const Select = ({
   const isSecondary = variant === 'secondary'
   const showError = !!errorMessage && errorMessage.length > 0
 
-  const optionsMap: Record<number | string, number | string> = useMemo(() => {
+  const optionsMap: Record<any | number | string, any | number | string> = useMemo(() => {
     return options.reduce(
       (acc, option) => {
+        console.log('-- option', option)
         acc[option.value] = option.label
+        if (option.icon) {
+          acc.icon = option.icon
+        }
 
         return acc
       },
-      {} as Record<number | string, number | string>
+      {} as Record<any | number | string, any | number | string>
     )
   }, [options])
 
+  // console.log('optionsMap', optionsMap)
   const classNames = {
     content: clsx('content', isSecondary && 'secondary'),
     icon: clsx('icon', [variant]),
@@ -111,6 +116,7 @@ export const Select = ({
     ? value.map(v => optionsMap[v]).join(', ')
     : optionsMap[value]
 
+  // console.log('selectedOptionsLabels', selectedOptionsLabels)
   const rootStyles = { width }
 
   return (
@@ -127,6 +133,7 @@ export const Select = ({
           >
             <SelectTrigger>
               <Listbox.Button className={classNames.trigger} type={'button'}>
+                <span>{}</span>
                 <span className={classNames.value}>{selectedOptionsLabels || placeholder}</span>
                 <SelectIcon className={classNames.icon}>
                   <ArrowDown />
@@ -147,6 +154,7 @@ export const Select = ({
                           type={'button'}
                           value={option.value}
                         >
+                          <span>{option.icon}</span>
                           <span>{option.label}</span>
                         </Listbox.Option>
                       </SelectItem>

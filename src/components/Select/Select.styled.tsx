@@ -161,6 +161,7 @@ export const SelectItem = styled.div`
     cursor: pointer;
 
     display: flex;
+    gap: 20px;
     color: ${props => props.theme.textColor['100']};
     width: 100%;
     padding: 6px 12px;

@@ -1,4 +1,7 @@
-import { FlagRus, FlagUK } from '../../icons'
+import Image from 'next/image'
+
+import flagRus from '../../icons/flagRus.png'
+import flagUK from '../../icons/flagUK.png'
 import { SelectOptionType } from './Select'
 
 export const options: SelectOptionType[] = [
@@ -75,13 +78,13 @@ export const optionsPagination: SelectOptionType[] = [
 
 export const optionsWithIcon: SelectOptionType[] = [
   {
-    icon: <FlagRus />,
-    label: 'Rus',
+    icon: <Image alt={'flagRus'} height={36} src={flagRus} width={36} />,
+    label: 'Russian',
     value: 'ru',
   },
   {
-    icon: <FlagUK />,
-    label: 'Eng',
+    icon: <Image alt={'flagUK'} height={36} src={flagUK} width={36} />,
+    label: 'English',
     value: 'en',
   },
 ]

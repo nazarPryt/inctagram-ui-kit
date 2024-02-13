@@ -12,13 +12,13 @@ type NavLinkProps = DefaultLinkPropsType & {
   pathname: string
 }
 
-export const NavLink = (props: NavLinkProps) => {
-  const isActive = props.pathname === props.href
+export const NavLink = ({ href, icon, name, pathname, ...rest }: NavLinkProps) => {
+  const isActive = pathname === href
 
   return (
-    <NavLinkWrapper {...props} $active={isActive}>
-      <NavIconWrapper $active={isActive}>{props.icon}</NavIconWrapper>
-      {props.name}
+    <NavLinkWrapper $active={isActive} href={href} {...rest}>
+      <NavIconWrapper $active={isActive}>{icon}</NavIconWrapper>
+      {name}
     </NavLinkWrapper>
   )
 }

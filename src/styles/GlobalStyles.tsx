@@ -11,15 +11,24 @@ export const GlobalStyles = createGlobalStyle`
     overflow-y: scroll;
    
   }
+  
+  body,header {
+      transition:
+              200ms background-color,
+              200ms color;
+      
+  }
 
   body {
+    
     background-color: ${({ theme }) => theme.bodyColor['700']};
     color: ${({ theme }) => theme.textColor['100']};
     scroll-behavior: smooth;
     text-rendering: optimizeSpeed;
     height: 100vh;
     margin: 0;
-
+   
+      
     &.isModalOpen {
       overflow: hidden;
     }
@@ -69,7 +78,8 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   &::-webkit-scrollbar {
-    display: none;
+      width: 10px;
+      background-color: #F5F5F5;
   }
 
   &::-webkit-scrollbar-thumb {
