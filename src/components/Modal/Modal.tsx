@@ -11,7 +11,7 @@ import {
   DialogHeader,
   DialogOverlay,
 } from './Modal.styled'
-export type ModalSize = 'lg' | 'md' | 'sm'
+export type ModalSize = 'full' | 'lg' | 'md' | 'sm'
 
 export type ModalProps = {
   onClose?: () => void
@@ -82,7 +82,7 @@ export const Modal = ({
                     )}
                   </DialogHeader>
                 )}
-                <DialogContentBox>{children}</DialogContentBox>
+                <DialogContentBox $size={size}>{children}</DialogContentBox>
               </motion.div>
             </DialogContent>
           </DialogPortal>

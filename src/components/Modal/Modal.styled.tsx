@@ -2,8 +2,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { DialogContentProps } from '@radix-ui/react-dialog'
 import { css, styled } from 'styled-components'
 
-import { typography } from '../../styles'
-import { IconColor } from '../../styles/mixins/IconColor'
+import { IconColor, typography } from '../../styles'
 import { ModalSize } from './Modal'
 
 export const DialogOverlay = styled(Dialog.Overlay)`
@@ -28,6 +27,8 @@ export const DialogContent = styled(Dialog.Content)<DialogContentProps & { $size
         return css`
           width: 367px;
         `
+      case 'full':
+        return css``
       case 'lg':
         return css`
           width: 764px;
@@ -54,10 +55,18 @@ export const DialogHeader = styled.header`
   }
 `
 
-export const DialogContentBox = styled.div`
+export const DialogContentBox = styled.div<{ $size: ModalSize }>`
   position: relative;
   padding: 23px 24px 36px;
   ${typography.Bold_text_16}
+
+  ${props => {
+    if (props.$size === 'full') {
+      return css`
+        padding: 0;
+      `
+    }
+  }}
 `
 export const DialogCloseButton = styled(Dialog.DialogClose)`
   cursor: pointer;
