@@ -1,8 +1,5 @@
-import { useState } from '@storybook/preview-api'
 import { Meta, StoryObj } from '@storybook/react'
 
-import { BlockedIcon, DotsHorizontal, PersonRemoveIcon } from '../../icons'
-import { Popover, PopoverItem } from '../Popover'
 import { Button } from './Button'
 
 const meta: Meta<typeof Button> = {
