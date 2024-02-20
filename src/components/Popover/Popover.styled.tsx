@@ -16,5 +16,5 @@ export const PopoverContent = styled(Popover.Content)<PopoverContentTypeProps>`
   z-index: 999;
   color: ${props => props.theme.textColor[100]};
   max-height: 470px;
-  overflow-y: auto;
+  //overflow-y: auto;
 `

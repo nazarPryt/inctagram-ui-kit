@@ -11,15 +11,19 @@ const rotate = keyframes`
 `
 
 export const LoaderStyled = styled.div<{ $fullScreen?: boolean; $size?: number }>`
+  position: ${props => (props.$fullScreen ? 'fixed' : '')};
+  top: ${props => (props.$fullScreen ? 0 : '')};
+  left: ${props => (props.$fullScreen ? 0 : '')};
+
   display: flex;
   align-items: center;
   justify-content: center;
-  position: ${props => (props.$fullScreen ? 'fixed' : '')};
-  top: ${props => (props.$fullScreen ? '50%' : '')};
-  transform: translate(0, -50%);
-  //border: 3px solid red //todo fix centered container;
+
   width: 100%;
   height: ${props => (props.$fullScreen ? '100vh' : '100%')};
+
+  background-color: ${props => props.theme.bodyColor[900]}15;
+  z-index: 103;
 
   span {
     display: inline-block;
@@ -35,6 +39,7 @@ export const LoaderStyled = styled.div<{ $fullScreen?: boolean; $size?: number }
       inset: 0;
       box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
     }
+
     &:after {
       box-shadow: 0 2px 0 #ff3d00 inset;
       animation: ${rotate} 1s linear infinite;

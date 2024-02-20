@@ -53,6 +53,10 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+  
+  .skeletonContainerFlex {
+      flex: 1
+  }
 
   //~~~~-autofills for inputs
   //https://css-tricks.com/almanac/selectors/a/autofill/
@@ -73,25 +77,16 @@ export const GlobalStyles = createGlobalStyle`
   //~~~~ScrollBar
   //https://codepen.io/devstreak/pen/dMYgeO
   &::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
-    background-color: #CCCCCC;
+      background-color: ${({ theme }) => theme.bodyColor['100']};
   }
 
   &::-webkit-scrollbar {
       width: 10px;
-      background-color: #F5F5F5;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #FFF;
-    background-image: -webkit-linear-gradient(90deg,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(0, 0, 0, 1) 25%,
-    transparent 100%,
-    rgba(0, 0, 0, 1) 75%,
-    transparent)
+      border-radius: 3px;
+      background-color: ${({ theme }) => theme.palette.primary['100']};
   }
-  .skeletonContainerFlex {
-      flex: 1
-  }
+ 
 `

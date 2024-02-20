@@ -5,7 +5,7 @@ module.exports = {
       files: ['**/*.stories.tsx'],
       rules: {
         'react-hooks/rules-of-hooks': 'off',
-        'no-console': 'off',
+        'no-console': 2,
       },
     },
   ],

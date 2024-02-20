@@ -21,11 +21,9 @@ export const Simple: Story = {
     const [popover, setPopover] = useState(false)
 
     const handleDeleteUser = () => {
-      console.log('handleDeleteUser')
       setPopover(false)
     }
     const handleBunInSystem = () => {
-      console.log('handleBunInSystem')
       setPopover(false)
     }
 

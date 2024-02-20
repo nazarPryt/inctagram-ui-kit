@@ -85,7 +85,6 @@ export const Select = ({
   const optionsMap: Record<any | number | string, any | number | string> = useMemo(() => {
     return options.reduce(
       (acc, option) => {
-        console.log('-- option', option)
         acc[option.value] = option.label
         if (option.icon) {
           acc.icon = option.icon

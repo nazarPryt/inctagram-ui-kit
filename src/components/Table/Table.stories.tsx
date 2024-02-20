@@ -81,16 +81,6 @@ export const SortableHeader: Story = {
   render: () => {
     const [sort, setOnSort] = useState<TableHeadSortType>({ direction: 'asc', key: 'id' })
 
-    const sortedString = () => {
-      if (!sort) {
-        return null
-      }
-
-      return `${sort.key}-${sort.direction}`
-    }
-
-    console.log(sortedString())
-
     return (
       <Table>
         <TableHead columns={TableStoryColumns} onSort={setOnSort} sort={sort} />
