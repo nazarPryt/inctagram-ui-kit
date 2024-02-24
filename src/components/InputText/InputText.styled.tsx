@@ -1,14 +1,12 @@
 import { css, styled } from 'styled-components'
 
-export const Wrapper = styled.div<{ $search?: boolean }>`
+import { typography } from '../../styles'
+
+export const Wrapper = styled.div<{ $error?: boolean; $search?: boolean }>`
   position: relative;
   width: 100%;
   padding: 20px 0 25px 0;
   margin: 5px;
-
-  textarea {
-    resize: none;
-  }
 
   input,
   textarea {
@@ -121,4 +119,25 @@ export const Wrapper = styled.div<{ $search?: boolean }>`
       `
     }
   }}
+
+  textarea {
+    display: flex;
+    flex-direction: column;
+    resize: none;
+    padding: 5px;
+    background-color: ${props => props.theme.bodyColor[300]};
+    min-height: 100px;
+  }
+  .box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .maxLength {
+    display: block;
+    ${typography.small_text}
+    margin: 5px 0;
+    color: ${props => (props.$error ? 'red' : props.theme.textColor[900])};
+  }
 `
