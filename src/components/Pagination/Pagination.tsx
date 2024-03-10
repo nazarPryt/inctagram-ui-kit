@@ -21,6 +21,8 @@ export type PaginationProps = {
   onChange: (page: number) => void
   page: number
   siblings?: number
+  onPage?:string
+  show?:string
 } & PaginationConditionals
 
 export const Pagination = ({
@@ -31,6 +33,8 @@ export const Pagination = ({
   perPage,
   perPageOptions,
   siblings,
+  show = 'show',
+  onPage = 'on page'
 }: PaginationProps) => {
   const {
     handleMainPageClicked,
@@ -66,6 +70,8 @@ export const Pagination = ({
             onPerPageChange,
             perPage,
             perPageOptions,
+            onPage,
+            show
           }}
         />
       )}

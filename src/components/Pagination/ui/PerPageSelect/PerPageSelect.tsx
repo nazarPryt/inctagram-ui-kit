@@ -5,9 +5,11 @@ export type PerPageSelectProps = {
   onPerPageChange: (itemPerPage: number) => void
   perPage: number
   perPageOptions: number[]
+  onPage:string
+  show:string
 }
 
-export const PerPageSelect = ({ onPerPageChange, perPage, perPageOptions }: PerPageSelectProps) => {
+export const PerPageSelect = ({ onPerPageChange, perPage, perPageOptions, show, onPage }: PerPageSelectProps) => {
   const selectOptions = perPageOptions.map(value => ({
     label: value,
     value,
@@ -15,7 +17,7 @@ export const PerPageSelect = ({ onPerPageChange, perPage, perPageOptions }: PerP
 
   return (
     <PerPageSelectStyled>
-      Show
+      {show}
       <Select
         className={'select'}
         onChange={onPerPageChange}
@@ -23,7 +25,7 @@ export const PerPageSelect = ({ onPerPageChange, perPage, perPageOptions }: PerP
         value={perPage}
         variant={'pagination'}
       />
-      on page
+      {onPage}
     </PerPageSelectStyled>
   )
 }
