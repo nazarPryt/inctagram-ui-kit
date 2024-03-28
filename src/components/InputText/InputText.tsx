@@ -24,7 +24,7 @@ export const InputText = forwardRef<HTMLInputElement, InputTextProps>(
     }
 
     return (
-      <Wrapper $search={search}>
+      <Wrapper $error={!!error?.length} $search={search}>
         <input ref={ref} {...rest} onKeyDown={handleKeyDown} required />
         {search && <span className={'searchIcon'}>{<SearchIcon />}</span>}
         <span className={'highlight'}></span>

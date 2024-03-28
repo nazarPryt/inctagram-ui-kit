@@ -13,12 +13,12 @@ export const Wrapper = styled.div<{ $error?: boolean; $search?: boolean }>`
     background: none;
     color: ${props => props.theme.textColor['100']};
     font-size: 18px;
-    padding: 5px 0;
+    padding: 5px 2px;
     display: block;
     width: 100%;
     border: none;
     border-radius: 0;
-    border-bottom: 1px solid mix(white, #424242, 70%);
+    border-bottom: 1px solid ${props => (props.$error ? 'red' : props.theme.textColor['900'])};
 
     &:focus {
       outline: none;
@@ -66,7 +66,7 @@ export const Wrapper = styled.div<{ $error?: boolean; $search?: boolean }>`
       width: 0;
       bottom: 0;
       position: absolute;
-      background: ${props => props.theme.palette.primary['300']};
+      background: ${props => (props.$error ? 'red' : props.theme.palette.primary['300'])};
       transition: 300ms ease all;
       left: 0;
     }

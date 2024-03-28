@@ -41,6 +41,14 @@ export const Search: Story = {
   },
 }
 
+export const EmailInput: Story = {
+  args: {
+    // error: 'Error message',
+    label: 'Email Input',
+    type: 'email',
+  },
+}
+
 export const Error: Story = {
   args: {
     error: 'Error message',

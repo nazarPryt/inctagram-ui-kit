@@ -16,9 +16,11 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         <span className={'bar'}></span>
         <div className={'box'}>
           <span className={'error'}>{error}</span>
-          <span className={'maxLength'}>
-            {value?.toString().length}/{maxLength}
-          </span>
+          {maxLength && (
+            <span className={'maxLength'}>
+              {value?.toString().length}/{maxLength}
+            </span>
+          )}
         </div>
         <label>{label}</label>
       </Wrapper>
