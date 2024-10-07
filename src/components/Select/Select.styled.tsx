@@ -48,7 +48,7 @@ export const SelectTrigger = styled.div`
     height: 36px;
     padding: 9px 8px 8px 12px;
 
-    ${typography.regular_text_16()}
+    ${typography.regular_text_16}
     font-family: inherit;
 
     color: ${props => props.theme.textColor[100]};
@@ -166,7 +166,7 @@ export const SelectItem = styled.div`
     width: 100%;
     padding: 6px 12px;
 
-    ${typography.regular_text_16()}
+    ${typography.regular_text_16}
     font-family: inherit;
     text-align: start;
 
