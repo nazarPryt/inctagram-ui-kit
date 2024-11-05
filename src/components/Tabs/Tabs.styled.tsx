@@ -1,6 +1,7 @@
 import * as TabsRadixUI from '@radix-ui/react-tabs'
 import { css, styled } from 'styled-components'
 
+import { IconColor } from '../../styles'
 import { TabsProps, TabsVariantType } from './Tabs'
 
 export const TabsRoot = styled(TabsRadixUI.Root)<TabsProps>`
@@ -25,6 +26,7 @@ export const TabsList = styled(TabsRadixUI.List)<{ $variant: TabsVariantType }>`
 `
 export const TabsTrigger = styled(TabsRadixUI.Trigger)<{
   $fullWidth: boolean | undefined
+  $showIcon?: boolean
   $variant: TabsVariantType
 }>`
   all: unset;
@@ -110,6 +112,25 @@ export const TabsTrigger = styled(TabsRadixUI.Trigger)<{
             background-color: inherit;
           }
         `
+    }
+  }}
+
+  ${props => {
+    if (props.$showIcon) {
+      return css`
+        min-width: auto;
+        padding: 6px 15px;
+
+        width: 30px;
+        height: 30px;
+
+        ${IconColor}
+
+        svg {
+          height: 100%;
+          width: 100%;
+        }
+      `
     }
   }}
 `

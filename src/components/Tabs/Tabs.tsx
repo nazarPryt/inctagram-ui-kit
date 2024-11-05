@@ -4,6 +4,7 @@ import { TabsContent, TabsList, TabsRoot, TabsTrigger } from './Tabs.styled'
 
 export type TabType = {
   disabled?: boolean
+  icon?: ReactNode
   title: string
   /** A unique value that associates the trigger with a content. */
   value: string
@@ -16,6 +17,7 @@ type CommonProps = {
   defaultValue?: string
   /** Event handler called when the value changes.  */
   onValueChange?: (value: string) => void
+  showIcon?: boolean
   /** An array of objects with the value and title of the tab.
    *  {value: string, title: string}
    * */
@@ -42,6 +44,7 @@ export const Tabs = ({
   defaultValue,
   fullWidth,
   onValueChange,
+  showIcon = false,
   tabs,
   value,
   variant = 'primary',
@@ -52,12 +55,14 @@ export const Tabs = ({
         {tabs.map(tab => (
           <TabsTrigger
             $fullWidth={fullWidth}
+            $showIcon={showIcon}
             $variant={variant}
             disabled={tab.disabled}
             key={tab.value}
             value={tab.value}
           >
-            {tab.title}
+            {!showIcon && tab.title}
+            {showIcon && tab.icon}
           </TabsTrigger>
         ))}
       </TabsList>

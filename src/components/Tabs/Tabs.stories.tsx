@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
+import { AddIcon, BlockedIcon, CloseIcon } from '../../icons'
 import { TabContent, Tabs } from './Tabs'
 
 const meta = {
@@ -13,9 +14,9 @@ const meta = {
     ),
     defaultValue: 'sprints',
     tabs: [
-      { title: 'Sprints', value: 'sprints' },
-      { title: 'Weeks', value: 'weeks' },
-      { title: 'Subject', value: 'subjects' },
+      { icon: <AddIcon />, title: 'Sprints', value: 'sprints' },
+      { icon: <BlockedIcon />, title: 'Weeks', value: 'weeks' },
+      { icon: <CloseIcon />, title: 'Subject', value: 'subjects' },
     ],
   },
   component: Tabs,
@@ -39,6 +40,13 @@ export const PrimaryWithDisabled: Story = {
 export const FullWidth: Story = {
   args: {
     fullWidth: true,
+  },
+}
+
+export const WithIcons: Story = {
+  args: {
+    fullWidth: true,
+    showIcon: true,
   },
 }
 
